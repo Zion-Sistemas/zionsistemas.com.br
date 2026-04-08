@@ -1,13 +1,15 @@
 "use client"
 
-import { useCallback } from "react"
-import Spline from "@splinetool/react-spline/next"
+import { useCallback, Suspense } from "react"
+import dynamic from "next/dynamic"
 import type { Application } from "@splinetool/runtime"
+
+const Spline = dynamic(() => import("@splinetool/react-spline"), { ssr: false })
 
 const SCENE_URL =
   "https://prod.spline.design/2603ebf4-bd9a-54ba-c1e9-6645c3ee7a53/scene.splinecode"
 
-export function SplineScene() {
+function SplineInner() {
   const onLoad = useCallback((spline: Application) => {
     spline.setBackgroundColor("rgba(0,0,0,0)")
   }, [])
@@ -19,5 +21,13 @@ export function SplineScene() {
       className="w-full h-full"
       style={{ background: "transparent" }}
     />
+  )
+}
+
+export function SplineScene() {
+  return (
+    <Suspense fallback={null}>
+      <SplineInner />
+    </Suspense>
   )
 }
