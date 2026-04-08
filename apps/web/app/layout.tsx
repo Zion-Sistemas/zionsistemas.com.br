@@ -1,15 +1,28 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import type { Metadata } from "next"
+import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@workspace/ui/lib/utils";
+import { cn } from "@workspace/ui/lib/utils"
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'})
-
-const fontMono = Geist_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-body",
+  display: "swap",
 })
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "600", "700", "800"],
+  display: "swap",
+})
+
+export const metadata: Metadata = {
+  title: "ZION | Sistemas que fazem seu negócio crescer",
+  description:
+    "Desenvolvemos softwares, automações e soluções digitais sob medida para empresas que querem escalar com eficiência e controle.",
+}
 
 export default function RootLayout({
   children,
@@ -18,9 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", geist.variable)}
+      className={cn("antialiased", inter.variable, plusJakartaSans.variable)}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>

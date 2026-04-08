@@ -1,19 +1,33 @@
-import { Button } from "@workspace/ui/components/button"
+import { Navbar } from "@/components/layout/navbar"
+import { Footer } from "@/components/layout/footer"
+import { HeroSection } from "@/components/sections/hero"
+import { ValueProofSection } from "@/components/sections/value-proof"
+import { AboutSection } from "@/components/sections/about"
+import { ServicesSection } from "@/components/sections/services"
+import { DifferentialsSection } from "@/components/sections/differentials"
+import { HowItWorksSection } from "@/components/sections/how-it-works"
+import { ResultsSection } from "@/components/sections/results"
+import { CtaMidSection } from "@/components/sections/cta-mid"
+import { FaqSection } from "@/components/sections/faq"
+import { CtaFinalSection } from "@/components/sections/cta-final"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <main>
+        <HeroSection />
+        <ValueProofSection />
+        <AboutSection />
+        <ServicesSection />
+        <DifferentialsSection />
+        <HowItWorksSection />
+        <ResultsSection />
+        <CtaMidSection />
+        <FaqSection />
+        <CtaFinalSection />
+      </main>
+      <Footer />
+    </>
   )
 }

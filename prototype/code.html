@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZION | Crafting Future Software Today!</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#b9c7e4",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001550",
+                        "on-primary-fixed-variant": "#003ab3",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#f7f5ff",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-container": "#d2e0fe",
+                        "on-secondary-fixed": "#0d1c32",
+                        "inverse-primary": "#b6c4ff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "tertiary": "#9e3500",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary-container": "#c74500",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d6e3ff",
+                        "tertiary-fixed-dim": "#ffb59a",
+                        "primary-fixed": "#dce1ff",
+                        "on-secondary-fixed-variant": "#39475f",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#515f78",
+                        "surface-tint": "#004ee8",
+                        "outline": "#737687",
+                        "on-tertiary-fixed": "#380d00",
+                        "on-tertiary-fixed-variant": "#802a00",
+                        "outline-variant": "#c3c5d8",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-fixed": "#ffdbcf",
+                        "on-tertiary-container": "#fff4f1",
+                        "on-surface-variant": "#434656",
+                        "on-secondary-container": "#55637d",
+                        "on-surface": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#2962ff",
+                        "primary": "#0049db",
+                        "surface-container": "#eceef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .hero-gradient { background: radial-gradient(circle at 50% 50%, #0049db 0%, #0d1c32 100%); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-white">
+<!-- Header / TopNavBar -->
+<header class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-full px-6 py-3 bg-surface/70 dark:bg-on-surface/70 backdrop-blur-xl flex justify-between items-center z-50 shadow-[0_20px_40px_rgba(0,73,219,0.06)] transition-all duration-300 ease-in-out">
+<div class="text-2xl font-black tracking-tighter text-on-surface dark:text-white">ZION</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-['Plus_Jakarta_Sans'] tracking-[0.1em] text-[0.75rem] font-bold uppercase text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 hover:scale-105 active:scale-95 transition-transform duration-200" href="#">SOLUTIONS</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-[0.1em] text-[0.75rem] font-semibold uppercase text-on-surface/60 dark:text-white/60 hover:text-on-surface dark:hover:text-white transition-colors hover:scale-105 active:scale-95 transition-transform duration-200" href="#">PROJECTS</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-[0.1em] text-[0.75rem] font-semibold uppercase text-on-surface/60 dark:text-white/60 hover:text-on-surface dark:hover:text-white transition-colors hover:scale-105 active:scale-95 transition-transform duration-200" href="#">PROCESS</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-[0.1em] text-[0.75rem] font-semibold uppercase text-on-surface/60 dark:text-white/60 hover:text-on-surface dark:hover:text-white transition-colors hover:scale-105 active:scale-95 transition-transform duration-200" href="#">TEAM</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-[0.1em] text-[0.75rem] font-semibold uppercase text-on-surface/60 dark:text-white/60 hover:text-on-surface dark:hover:text-white transition-colors hover:scale-105 active:scale-95 transition-transform duration-200" href="#">CAREERS</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold text-xs tracking-widest hover:scale-105 active:scale-95 transition-transform duration-200">START PROJECT</button>
+</header>
+<main>
+<!-- Section 1: Hero -->
+<section class="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden bg-[#0d1c32]">
+<div class="absolute inset-0 z-0 overflow-hidden">
+<div class="absolute top-[-10%] right-[-5%] w-1/2 h-1/2 bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-1/3 h-1/3 bg-blue-600/10 blur-[100px] rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-blue-400 font-bold text-xs tracking-widest">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                        DIGITAL EXCELLENCE
+                    </div>
+<h1 class="text-5xl md:text-7xl font-black text-white leading-tight tracking-tighter">
+                        Crafting Future Software Today!
+                    </h1>
+<p class="text-xl text-white/60 font-body max-w-lg leading-relaxed">
+                        Transformando ideias em sucessos através de engenharia de software de elite e design centrado no humano.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary hover:bg-primary-container text-white px-8 py-4 rounded-full font-bold tracking-wide transition-all shadow-[0_20px_40px_rgba(0,73,219,0.3)] hover:scale-105 active:scale-95">
+                            CONECTAR
+                        </button>
+<button class="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold border border-white/10 tracking-wide transition-all hover:scale-105 active:scale-95">
+                            VER PROJETOS
+                        </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/20 blur-3xl opacity-50 group-hover:opacity-70 transition duration-1000"></div>
+<div class="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Modern abstract software visualization with deep blue light streaks and geometric patterns representing digital architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA77T04k-HLybR-ldlJgyTtSAtbokvEzvAoLRf98AB_vliZ-7Ysk0S4e5D0P-w5TaN7IXp7OFpguFey_arkDKmQmaXQXzlzZiEm5TptPZsl-jWXXMjzH5Q-ycMRbd66RhjhDvmqLpmqZBB66tu0wA0FnpY17BT1TdIwMT-r6Cdrg-MA2IY9UxWXS94yYuiWaw0cNOSaOOD1IQ7SYaVQmCoK2l3q3xB0GVJqOB-kVyvO1DxSQRvRa6G2sUa1hxZI_yH-EKUVcSUQA_rG"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Social Proof -->
+<section class="bg-[#050b14] py-12 border-y border-white/5">
+<div class="max-w-7xl mx-auto px-8">
+<p class="text-center text-white/40 text-xs font-bold tracking-[0.2em] mb-12 uppercase">Parceiros de Inovação</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="text-2xl font-black text-white">NEXUS</div>
+<div class="text-2xl font-black text-white">ORBIT</div>
+<div class="text-2xl font-black text-white">QUANTUM</div>
+<div class="text-2xl font-black text-white">VORTEX</div>
+<div class="text-2xl font-black text-white">STRATUS</div>
+</div>
+</div>
+</section>
+<!-- Section 3: About -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="md:w-1/2">
+<h2 class="text-sm font-black text-primary tracking-widest mb-6 uppercase">Nossa Missão</h2>
+<h3 class="text-4xl md:text-5xl font-black text-on-surface leading-tight tracking-tighter mb-8">
+                            Construímos o intangível com precisão absoluta.
+                        </h3>
+<p class="text-lg text-on-surface/70 leading-relaxed font-body mb-8">
+                            A ZION nasceu da necessidade de elevar o padrão do desenvolvimento de software no Brasil. Não somos apenas programadores; somos arquitetos de soluções escaláveis que resolvem problemas reais de negócios.
+                        </p>
+<div class="grid grid-cols-2 gap-8 border-t border-outline-variant/30 pt-8">
+<div>
+<span class="block text-4xl font-black text-on-surface">120+</span>
+<span class="text-sm text-on-surface/50 font-bold tracking-wide">TALENTOS TECH</span>
+</div>
+<div>
+<span class="block text-4xl font-black text-on-surface">98%</span>
+<span class="text-sm text-on-surface/50 font-bold tracking-wide">SATISFAÇÃO</span>
+</div>
+</div>
+</div>
+<div class="md:w-1/2 relative">
+<div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Interior of a modern high-end architectural office in Brazil with clean lines, natural light, and minimalist concrete furniture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFZvXBXogSTcPPbIQRuBwS8OiVlmvgln6a_Zf5u0gGo0qYOwT1MCia2TOTlr6Db5fO3E8veGLyzfpGZlBvzymjiSRx452xd4ZG0iGeGlBWUh9Qlin1YJPQx037RCxGX0VMRU35eNpNxB-OcYeHqEhFL-YPE4osopwIK6_joOiAjC1P8EgtrWmpn45WZUr6Ukyh0Y00GXUDdmGcTNYUdQFunO_Io7HHt3zSpmw5LFWHs1gwgx0vWLvwXM_8jYaZcD-a6pl5OnaZGfdX"/>
+</div>
+<div class="absolute -bottom-6 -left-6 p-8 bg-primary rounded-xl shadow-xl max-w-xs">
+<p class="text-white font-bold leading-tight">"A Zion elevou nossa infraestrutura para o próximo nível."</p>
+<p class="text-white/60 text-sm mt-4 font-body">— CTO, Global Tech Inc.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Services -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8 text-center mb-16">
+<h2 class="text-sm font-black text-primary tracking-widest mb-4 uppercase">Especialidades</h2>
+<h3 class="text-4xl md:text-5xl font-black text-on-surface tracking-tighter">Nosso Ecossistema de Serviços</h3>
+</div>
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group">
+<div class="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">group_add</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Talent Augmentation</h4>
+<p class="text-on-surface/60 text-sm leading-relaxed">Incorpore desenvolvedores seniores diretamente no seu time em tempo recorde.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group">
+<div class="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">deployed_code</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Product Engineering</h4>
+<p class="text-on-surface/60 text-sm leading-relaxed">Desenvolvimento ponta a ponta, do design UI/UX à arquitetura Cloud nativa.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group">
+<div class="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Startup Services</h4>
+<p class="text-on-surface/60 text-sm leading-relaxed">MVP acelerado com foco em métricas de negócio e escalabilidade imediata.</p>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 group">
+<div class="w-14 h-14 bg-primary/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">query_stats</span>
+</div>
+<h4 class="text-xl font-bold mb-4">Technology Consulting</h4>
+<p class="text-on-surface/60 text-sm leading-relaxed">Auditoria técnica e planejamento estratégico para modernização de legado.</p>
+</div>
+</div>
+</section>
+<!-- Section 5: Differentials -->
+<section class="py-24 bg-[#0d1c32] text-white overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 relative">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+<div>
+<h2 class="text-sm font-black text-blue-400 tracking-widest mb-6 uppercase">Diferenciais</h2>
+<h3 class="text-4xl md:text-6xl font-black leading-tight tracking-tighter mb-12">Por que líderes escolhem a ZION?</h3>
+<div class="space-y-12">
+<div class="flex gap-6">
+<span class="text-blue-500 font-black text-2xl">01</span>
+<div>
+<h4 class="text-xl font-bold mb-2">Engenharia de Elite</h4>
+<p class="text-white/60 font-body">Nosso processo seletivo filtra apenas o top 1% dos talentos tecnológicos da América Latina.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-blue-500 font-black text-2xl">02</span>
+<div>
+<h4 class="text-xl font-bold mb-2">Agilidade Real</h4>
+<p class="text-white/60 font-body">Metodologias adaptativas que garantem entregas de valor toda semana, sem burocracia.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<span class="text-blue-500 font-black text-2xl">03</span>
+<div>
+<h4 class="text-xl font-bold mb-2">Transparência Total</h4>
+<p class="text-white/60 font-body">Acesso direto ao repositório e comunicação constante via canais dedicados.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute inset-0 bg-primary/20 blur-[100px]"></div>
+<div class="relative bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md">
+<img class="rounded-xl shadow-inner mb-8" data-alt="Futuristic software dashboard showing complex data visualizations in glowing blue and teal tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk0GkSnu5Ut_3K0i4lmMbf2MgYxOtQfJW2dyeMalmfUlKFwgcpuFXz3-dd-htJ9swyRoimvIz3hqsUeW-IQpXdSkTJu503VYNJilvDTX36TFzrPfLsAgbGL_Mj6r3zyngbEAEGWoQ5nZf1qauM-I5UwEOlM7MOivXQXKQNes1jZLcHzPbSUC9ZQcV1FzITpUOIWeDr2pLfkq0AuiXXY665Tf-j1Pjt-bGjJtkkd59hMAHVQLoKz_0iOScnarZo-uTh08FDcbuwtuxE"/>
+<div class="flex justify-between items-center px-4">
+<div>
+<p class="text-xs text-white/40 uppercase font-bold tracking-widest">Tempo de Entrega</p>
+<p class="text-2xl font-black">40% Mais Rápido</p>
+</div>
+<span class="material-symbols-outlined text-4xl text-blue-400">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: How It Works -->
+<section class="py-24 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-16">
+<h2 class="text-sm font-black text-primary tracking-widest mb-4 uppercase">Metodologia</h2>
+<h3 class="text-4xl md:text-5xl font-black text-on-surface tracking-tighter">O Caminho para o Sucesso</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="relative p-8 rounded-2xl bg-surface-container-low">
+<span class="absolute top-4 right-4 text-6xl font-black text-primary/10">01</span>
+<h4 class="text-xl font-bold mb-4">Planning</h4>
+<p class="text-on-surface/60 text-sm">Alinhamento estratégico e definição de KPIs críticos para o negócio.</p>
+</div>
+<div class="relative p-8 rounded-2xl bg-surface-container-low md:mt-8">
+<span class="absolute top-4 right-4 text-6xl font-black text-primary/10">02</span>
+<h4 class="text-xl font-bold mb-4">UX Design</h4>
+<p class="text-on-surface/60 text-sm">Prototipagem de alta fidelidade focada em experiência e conversão.</p>
+</div>
+<div class="relative p-8 rounded-2xl bg-surface-container-low md:mt-16">
+<span class="absolute top-4 right-4 text-6xl font-black text-primary/10">03</span>
+<h4 class="text-xl font-bold mb-4">Technical Foundations</h4>
+<p class="text-on-surface/60 text-sm">Construção do core robusto com foco em segurança e performance.</p>
+</div>
+<div class="relative p-8 rounded-2xl bg-surface-container-low md:mt-24">
+<span class="absolute top-4 right-4 text-6xl font-black text-primary/10">04</span>
+<h4 class="text-xl font-bold mb-4">Launch</h4>
+<p class="text-on-surface/60 text-sm">Deploy contínuo e monitoramento proativo pós-lançamento.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Results/Benefits (Bento Grid) -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-6 h-auto md:h-[600px]">
+<div class="md:col-span-2 bg-primary rounded-3xl p-12 text-white flex flex-col justify-end relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-12 opacity-20 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[120px]">public</span>
+</div>
+<h4 class="text-6xl font-black mb-4 tracking-tighter">500+</h4>
+<p class="text-xl text-white/80 font-bold uppercase tracking-widest">Projetos Entregues Globalmente</p>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-12 border border-outline-variant/20 flex flex-col justify-center text-center">
+<h4 class="text-5xl font-black text-primary mb-2">12ms</h4>
+<p class="text-on-surface/50 font-bold text-xs uppercase tracking-widest">Latência Média</p>
+</div>
+<div class="bg-on-secondary-fixed rounded-3xl p-12 text-white flex flex-col justify-center">
+<div class="flex gap-1 text-primary-container mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-lg italic font-body">"O parceiro tecnológico mais confiável que já tivemos."</p>
+</div>
+<div class="md:col-span-2 bg-white rounded-3xl p-12 flex items-center justify-between shadow-sm border border-outline-variant/10">
+<div>
+<h4 class="text-4xl font-black mb-2">ISO 27001</h4>
+<p class="text-on-surface/60">Segurança de dados e conformidade total.</p>
+</div>
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-primary">verified_user</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 8: Mid-page CTA -->
+<section class="py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="relative bg-primary rounded-[3rem] p-12 md:p-24 overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
+<h3 class="text-4xl md:text-6xl font-black text-white tracking-tighter max-w-xl leading-tight">
+                            Pronto para começar seu próximo grande projeto?
+                        </h3>
+<button class="bg-white text-primary px-12 py-6 rounded-full font-black text-lg shadow-2xl hover:scale-105 active:scale-95 transition-transform">
+                            FALE CONOSCO
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 9: FAQ -->
+<section class="py-24 bg-surface">
+<div class="max-w-3xl mx-auto px-8">
+<h3 class="text-3xl font-black text-center mb-12 tracking-tight">Dúvidas Frequentes</h3>
+<div class="space-y-4">
+<div class="bg-surface-container-low rounded-2xl p-6">
+<div class="flex justify-between items-center cursor-pointer">
+<span class="font-bold">Como funciona a precificação?</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+<p class="mt-4 text-sm text-on-surface/60 hidden">Oferecemos modelos de Fixed-Price para escopos fechados e Time &amp; Materials para projetos ágeis e escaláveis.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6 border-l-4 border-primary">
+<div class="flex justify-between items-center cursor-pointer">
+<span class="font-bold">Qual o tempo médio de onboarding?</span>
+<span class="material-symbols-outlined">expand_less</span>
+</div>
+<p class="mt-4 text-sm text-on-surface/60">Conseguimos alocar squads completos ou desenvolvedores individuais em até 5 dias úteis após o fechamento do contrato.</p>
+</div>
+<div class="bg-surface-container-low rounded-2xl p-6">
+<div class="flex justify-between items-center cursor-pointer">
+<span class="font-bold">Vocês trabalham com manutenção de legado?</span>
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+<p class="mt-4 text-sm text-on-surface/60 hidden">Sim, oferecemos serviços de modernização e manutenção sustentável para arquiteturas existentes.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 10: Final CTA -->
+<section class="py-32 bg-[#050b14] relative overflow-hidden text-center">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full"></div>
+</div>
+<div class="relative z-10 max-w-4xl mx-auto px-8">
+<h2 class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-8 leading-tight">
+                    Vamos construir o futuro juntos.
+                </h2>
+<p class="text-xl text-white/60 mb-12 max-w-2xl mx-auto font-body">
+                    A jornada para um software de classe mundial começa com uma conversa. Agende sua consultoria gratuita hoje.
+                </p>
+<div class="flex flex-col md:flex-row justify-center gap-6">
+<button class="bg-primary text-white px-10 py-5 rounded-full font-bold text-lg hover:scale-105 active:scale-95 transition-transform shadow-2xl">
+                        AGENDAR CONSULTA
+                    </button>
+<button class="bg-white/5 text-white px-10 py-5 rounded-full font-bold text-lg border border-white/10 hover:bg-white/10 transition-all">
+                        NOSSA CULTURA
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0d1c32] w-full pt-24 pb-12">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="md:col-span-2">
+<span class="text-3xl font-black text-white mb-8 block">ZION</span>
+<p class="text-white/40 max-w-xs font-['Inter'] text-sm leading-relaxed mb-8">
+                    Arquitetura digital de alta performance para empresas que não aceitam o comum. Sediados em São Paulo, atuando globalmente.
+                </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-blue-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">language</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/40 hover:text-blue-400 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6 text-sm tracking-widest uppercase">Expertise</h5>
+<ul class="space-y-4">
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">Fullstack Development</a></li>
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">Cloud Architecture</a></li>
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">AI &amp; Machine Learning</a></li>
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">Mobile Systems</a></li>
+</ul>
+</div>
+<div>
+<h5 class="text-white font-bold mb-6 text-sm tracking-widest uppercase">Zion Hub</h5>
+<ul class="space-y-4">
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">INSTAGRAM</a></li>
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">LINKEDIN</a></li>
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">DRIBBBLE</a></li>
+<li><a class="text-white/40 hover:text-blue-400 transition-colors font-['Inter'] text-sm" href="#">GITHUB</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-white/40 text-xs font-bold tracking-widest">© 2024 ZION ARCHITECTS. BUILT FOR PERMANENCE.</p>
+<div class="flex gap-8">
+<a class="text-white/40 hover:text-white transition-colors text-xs font-bold tracking-widest" href="#">PRIVACY</a>
+<a class="text-white/40 hover:text-white transition-colors text-xs font-bold tracking-widest" href="#">TERMS</a>
+</div>
+</div>
+</footer>
+</body></html>
