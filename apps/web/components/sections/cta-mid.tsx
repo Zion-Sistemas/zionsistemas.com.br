@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { ArrowRightIcon } from "@heroicons/react/24/solid"
 import { ctaMid } from "@/lib/content"
 
 export function CtaMidSection() {
@@ -31,9 +32,12 @@ export function CtaMidSection() {
 
           <Link
             href={ctaMid.cta.href}
-            className="inline-flex items-center bg-gradient-to-br from-[#0049db] to-[#2962ff] text-white px-10 py-4 rounded-full font-bold text-sm tracking-wide shadow-[0_20px_40px_rgba(0,73,219,0.35)] hover:scale-105 active:scale-95 transition-transform duration-200"
+            className="group inline-flex items-center gap-3 bg-white text-[#191c1e] pl-6 pr-2 py-2 rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.20)]"
           >
             {ctaMid.cta.label}
+            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#0049db] text-white group-hover:bg-[#2962ff] transition-colors duration-200 shrink-0">
+              <ArrowRightIcon className="size-4" />
+            </span>
           </Link>
         </motion.div>
       </div>

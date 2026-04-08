@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { cn } from "@workspace/ui/lib/utils"
 import { footer } from "@/lib/content"
@@ -26,23 +26,23 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+      <header
         className={cn(
           "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl",
           "rounded-full px-6 py-3 flex justify-between items-center",
-          "transition-all duration-300",
+          "transition-all duration-500",
           scrolled
-            ? "bg-[#f7f9fb]/80 backdrop-blur-xl shadow-[0_20px_40px_rgba(0,73,219,0.08)]"
-            : "bg-[#f7f9fb]/60 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,73,219,0.04)]"
+            ? "bg-[#f7f9fb]/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,73,219,0.10)] ring-1 ring-[#c3c5d8]/40"
+            : "bg-transparent backdrop-blur-none shadow-none ring-0"
         )}
       >
         {/* Logo */}
         <Link
           href="#hero"
-          className="text-2xl font-black tracking-tighter text-[#191c1e] font-[family-name:var(--font-display)]"
+          className={cn(
+            "text-2xl font-black tracking-tighter font-[family-name:var(--font-display)] transition-colors duration-500",
+            scrolled ? "text-[#191c1e]" : "text-white"
+          )}
         >
           ZION
         </Link>
@@ -53,7 +53,10 @@ export function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="font-[family-name:var(--font-display)] tracking-[0.1em] text-[0.75rem] font-semibold text-[#191c1e]/60 hover:text-[#191c1e] transition-colors duration-200"
+              className={cn(
+                "font-[family-name:var(--font-display)] tracking-[0.1em] text-[0.75rem] font-semibold transition-colors duration-500",
+                scrolled ? "text-[#191c1e]/60 hover:text-[#191c1e]" : "text-white/70 hover:text-white"
+              )}
             >
               {link.label}
             </Link>
@@ -70,13 +73,16 @@ export function Navbar() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden text-[#191c1e] p-1"
+          className={cn(
+            "md:hidden p-1 transition-colors duration-500",
+            scrolled ? "text-[#191c1e]" : "text-white"
+          )}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <XMarkIcon className="size-6" /> : <Bars3Icon className="size-6" />}
         </button>
-      </motion.header>
+      </header>
 
       {/* Mobile menu */}
       <AnimatePresence>

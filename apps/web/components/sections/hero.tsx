@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { ArrowRightIcon } from "@heroicons/react/24/solid"
 import { hero } from "@/lib/content"
 
 const container = {
@@ -27,13 +28,6 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <motion.div variants={container} initial="hidden" animate="show" className="space-y-8">
-          {/* Badge */}
-          <motion.div variants={item}>
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#0049db]/10 border border-[#0049db]/20 text-blue-400 font-bold text-xs tracking-widest font-[family-name:var(--font-display)]">
-              ⚡ {hero.badge}
-            </span>
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             variants={item}
@@ -53,17 +47,25 @@ export function HeroSection() {
 
           {/* CTAs */}
           <motion.div variants={item} className="flex flex-wrap gap-4 pt-2">
+            {/* Primary — pill with blue circle-arrow */}
             <Link
               href={hero.ctaPrimary.href}
-              className="bg-gradient-to-br from-[#0049db] to-[#2962ff] text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide shadow-[0_20px_40px_rgba(0,73,219,0.35)] hover:scale-105 active:scale-95 transition-transform duration-200"
+              className="group inline-flex items-center gap-3 bg-white text-[#191c1e] pl-6 pr-2 py-2 rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform duration-200 shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
             >
               {hero.ctaPrimary.label}
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#0049db] text-white group-hover:bg-[#2962ff] transition-colors duration-200 shrink-0">
+                <ArrowRightIcon className="size-4" />
+              </span>
             </Link>
+            {/* Secondary — ghost pill with circle-arrow */}
             <Link
               href={hero.ctaSecondary.href}
-              className="bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-sm border border-white/10 tracking-wide hover:scale-105 active:scale-95 transition-all duration-200"
+              className="group inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 text-white pl-6 pr-2 py-2 rounded-full font-semibold text-sm border border-white/15 hover:scale-105 active:scale-95 transition-all duration-200"
             >
               {hero.ctaSecondary.label}
+              <span className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 text-white group-hover:bg-white/20 transition-colors duration-200 shrink-0">
+                <ArrowRightIcon className="size-4" />
+              </span>
             </Link>
           </motion.div>
         </motion.div>
@@ -77,7 +79,6 @@ export function HeroSection() {
         >
           <div className="absolute -inset-8 bg-[#0049db]/15 blur-3xl opacity-60 group-hover:opacity-80 transition duration-1000 rounded-full" />
           <div className="relative rounded-3xl overflow-hidden bg-[#0d1c32] border border-white/10 p-10 flex items-center justify-center min-h-[420px]">
-            {/* Abstract code-art placeholder */}
             <div className="w-full space-y-3 font-mono text-xs text-white/20">
               {[
                 "const scale = (business) => {",
