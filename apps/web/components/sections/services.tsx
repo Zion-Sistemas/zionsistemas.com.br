@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/outline"
 import { Card, CardContent } from "@workspace/ui/components/card"
 import { services } from "@/lib/content"
+import Balancer from "react-wrap-balancer"
 
 export function ServicesSection() {
   return (
@@ -32,7 +33,7 @@ export function ServicesSection() {
             className="font-[family-name:var(--font-display)] text-4xl font-black text-[#191c1e] md:text-5xl"
             style={{ letterSpacing: "-0.02em" }}
           >
-            {services.headline}
+            <Balancer>{services.headline}</Balancer>
           </h2>
         </motion.div>
 

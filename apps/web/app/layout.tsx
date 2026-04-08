@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Inter, Plus_Jakarta_Sans } from "next/font/google"
+import { Provider as BalancerProvider } from "react-wrap-balancer"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -36,7 +37,9 @@ export default function RootLayout({
       className={cn("antialiased", inter.variable, plusJakartaSans.variable)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <BalancerProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </BalancerProvider>
       </body>
     </html>
   )

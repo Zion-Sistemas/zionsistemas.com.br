@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { howItWorks } from "@/lib/content"
+import Balancer from "react-wrap-balancer"
 
 export function HowItWorksSection() {
   return (
@@ -22,7 +23,7 @@ export function HowItWorksSection() {
             className="text-4xl md:text-5xl font-black text-[#191c1e] font-[family-name:var(--font-display)]"
             style={{ letterSpacing: "-0.02em" }}
           >
-            {howItWorks.headline}
+            <Balancer>{howItWorks.headline}</Balancer>
           </h2>
         </motion.div>
 

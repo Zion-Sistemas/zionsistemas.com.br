@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
+import Balancer from "react-wrap-balancer"
 import { ctaFinal } from "@/lib/content"
 
 export function CtaFinalSection() {
@@ -25,10 +26,10 @@ export function CtaFinalSection() {
             className="text-4xl md:text-6xl font-black text-white font-[family-name:var(--font-display)]"
             style={{ letterSpacing: "-0.02em" }}
           >
-            {ctaFinal.headline}
+            <Balancer>{ctaFinal.headline}</Balancer>
           </h2>
           <p className="text-white/50 text-lg max-w-xl mx-auto leading-relaxed">
-            {ctaFinal.body}
+            <Balancer>{ctaFinal.body}</Balancer>
           </p>
           <Link
             href={ctaFinal.cta.href}

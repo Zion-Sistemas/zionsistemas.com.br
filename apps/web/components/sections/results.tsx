@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Square3Stack3DIcon, AdjustmentsHorizontalIcon, RocketLaunchIcon, ArrowPathIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline"
 import { results } from "@/lib/content"
+import Balancer from "react-wrap-balancer"
 
 const iconMap: Record<string, React.ReactNode> = {
   layers: <Square3Stack3DIcon className="size-7" />,
@@ -30,7 +31,7 @@ export function ResultsSection() {
             className="text-4xl md:text-5xl font-black text-[#191c1e] font-[family-name:var(--font-display)]"
             style={{ letterSpacing: "-0.02em" }}
           >
-            {results.headline}
+            <Balancer>{results.headline}</Balancer>
           </h2>
         </motion.div>
 

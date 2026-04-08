@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
+import Balancer from "react-wrap-balancer"
 import { ctaMid } from "@/lib/content"
 
 export function CtaMidSection() {
@@ -25,9 +26,7 @@ export function CtaMidSection() {
             className="text-3xl md:text-5xl font-black text-white font-[family-name:var(--font-display)]"
             style={{ letterSpacing: "-0.02em" }}
           >
-            {ctaMid.headline}
-            <br />
-            <span className="text-[#2962ff]">{ctaMid.subheadline}</span>
+            <Balancer>{ctaMid.headline}<br /><span className="text-[#2962ff]">{ctaMid.subheadline}</span></Balancer>
           </h2>
 
           <Link

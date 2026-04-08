@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { CheckCircleIcon } from "@heroicons/react/24/solid"
+import Balancer from "react-wrap-balancer"
 import { about } from "@/lib/content"
 
 export function AboutSection() {
@@ -23,7 +24,7 @@ export function AboutSection() {
               className="text-4xl md:text-5xl font-black text-[#191c1e] leading-tight mb-8 font-[family-name:var(--font-display)]"
               style={{ letterSpacing: "-0.02em" }}
             >
-              {about.headline}
+              <Balancer>{about.headline}</Balancer>
             </h2>
             {about.body.map((p, i) => (
               <p key={i} className="text-[#191c1e]/70 text-lg leading-relaxed mb-5">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion"
 import { differentials } from "@/lib/content"
+import Balancer from "react-wrap-balancer"
 
 export function DifferentialsSection() {
   return (
@@ -22,7 +23,7 @@ export function DifferentialsSection() {
               className="text-4xl md:text-6xl font-black text-white leading-tight font-[family-name:var(--font-display)]"
               style={{ letterSpacing: "-0.02em" }}
             >
-              {differentials.headline}
+              <Balancer>{differentials.headline}</Balancer>
             </h2>
           </motion.div>
 
