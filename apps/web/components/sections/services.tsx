@@ -1,14 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, TrendingUp, Zap, Link2 } from "lucide-react"
+import { CodeBracketIcon, ArrowTrendingUpIcon, BoltIcon, LinkIcon } from "@heroicons/react/24/outline"
 import { services } from "@/lib/content"
 
 const iconMap: Record<string, React.ReactNode> = {
-  code: <Code size={24} />,
-  "trending-up": <TrendingUp size={24} />,
-  zap: <Zap size={24} />,
-  link: <Link2 size={24} />,
+  code: <CodeBracketIcon className="size-6" />,
+  "trending-up": <ArrowTrendingUpIcon className="size-6" />,
+  zap: <BoltIcon className="size-6" />,
+  link: <LinkIcon className="size-6" />,
 }
 
 export function ServicesSection() {

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { CheckCircle } from "lucide-react"
+import { CheckCircleIcon } from "@heroicons/react/24/solid"
 import { about } from "@/lib/content"
 
 export function AboutSection() {
@@ -35,7 +35,7 @@ export function AboutSection() {
             <ul className="mt-6 space-y-3">
               {about.bullets.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-[#191c1e]/80">
-                  <CheckCircle size={18} className="text-[#0049db] shrink-0" />
+                  <CheckCircleIcon className="size-5 text-[#0049db] shrink-0" />
                   <span>{b}</span>
                 </li>
               ))}

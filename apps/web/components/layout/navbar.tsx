@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import { cn } from "@workspace/ui/lib/utils"
 import { footer } from "@/lib/content"
 
@@ -74,7 +74,7 @@ export function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <XMarkIcon className="size-6" /> : <Bars3Icon className="size-6" />}
         </button>
       </motion.header>
 

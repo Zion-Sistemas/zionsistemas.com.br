@@ -1,15 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Layers, SlidersHorizontal, Rocket, RefreshCw, TrendingUp } from "lucide-react"
+import { Square3Stack3DIcon, AdjustmentsHorizontalIcon, RocketLaunchIcon, ArrowPathIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline"
 import { results } from "@/lib/content"
 
 const iconMap: Record<string, React.ReactNode> = {
-  layers: <Layers size={28} />,
-  sliders: <SlidersHorizontal size={28} />,
-  rocket: <Rocket size={28} />,
-  "refresh-cw": <RefreshCw size={28} />,
-  "trending-up": <TrendingUp size={28} />,
+  layers: <Square3Stack3DIcon className="size-7" />,
+  sliders: <AdjustmentsHorizontalIcon className="size-7" />,
+  rocket: <RocketLaunchIcon className="size-7" />,
+  "refresh-cw": <ArrowPathIcon className="size-7" />,
+  "trending-up": <ArrowTrendingUpIcon className="size-7" />,
 }
 
 export function ResultsSection() {
