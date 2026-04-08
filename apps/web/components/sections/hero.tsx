@@ -75,7 +75,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="relative hidden lg:block w-full"
+          className="relative hidden lg:block w-full overflow-hidden"
           style={{ height: "520px" }}
         >
           <SplineScene />

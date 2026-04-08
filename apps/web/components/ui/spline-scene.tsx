@@ -1,26 +1,31 @@
 "use client"
 
-import { useCallback, Suspense } from "react"
-import dynamic from "next/dynamic"
-import type { Application } from "@splinetool/runtime"
+import { Suspense } from "react"
 
-const Spline = dynamic(() => import("@splinetool/react-spline"), { ssr: false })
-
-const SCENE_URL =
-  "https://prod.spline.design/2603ebf4-bd9a-54ba-c1e9-6645c3ee7a53/scene.splinecode"
+const VIEWER_URL =
+  "https://my.spline.design/gradientblobscopycopy-aqhQLpwubdT6o2QQsoWcmQB6-6NG/"
 
 function SplineInner() {
-  const onLoad = useCallback((spline: Application) => {
-    spline.setBackgroundColor("rgba(0,0,0,0)")
-  }, [])
-
   return (
-    <Spline
-      scene={SCENE_URL}
-      onLoad={onLoad}
-      className="w-full h-full"
-      style={{ background: "transparent" }}
-    />
+    /* mix-blend-mode:screen makes pure black transparent and preserves
+       the bright gradient blobs — no background leaks through */
+    <div className="w-full h-full" style={{ mixBlendMode: "screen" }}>
+      <iframe
+        src={VIEWER_URL}
+        title="ZION gradient animation"
+        loading="lazy"
+        allow="autoplay"
+        /* Scale up slightly so the Spline watermark bar at the bottom
+           is pushed outside the clipped container */
+        style={{
+          width: "100%",
+          height: "115%",
+          border: "none",
+          marginTop: "-7.5%",
+          display: "block",
+        }}
+      />
+    </div>
   )
 }
 
