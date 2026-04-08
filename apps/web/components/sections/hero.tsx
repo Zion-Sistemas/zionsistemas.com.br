@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
 import Balancer from "react-wrap-balancer"
+import { SplineScene } from "@/components/ui/spline-scene"
 import { hero } from "@/lib/content"
 
 const container = {
@@ -77,14 +78,7 @@ export function HeroSection() {
           className="relative hidden lg:block w-full"
           style={{ height: "520px" }}
         >
-          <iframe
-            src="https://my.spline.design/gradientblobscopycopy-aqhQLpwubdT6o2QQsoWcmQB6-6NG/"
-            frameBorder="0"
-            className="w-full h-full rounded-2xl"
-            title="ZION 3D animation"
-            loading="lazy"
-            allow="autoplay"
-          />
+          <SplineScene />
         </motion.div>
       </div>
     </section>
