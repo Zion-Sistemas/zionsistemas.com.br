@@ -1,9 +1,11 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { CheckCircleIcon } from "@heroicons/react/24/solid"
 import Balancer from "react-wrap-balancer"
 import { about } from "@/lib/content"
+import mountainImage from "@/assets/mountain.png"
 
 export function AboutSection() {
   return (
@@ -52,23 +54,15 @@ export function AboutSection() {
             className="relative"
           >
             {/* Background card */}
-            <div className="rounded-3xl bg-[#f2f4f6] aspect-[4/3] flex items-center justify-center p-10">
-              <div className="text-center space-y-8">
-                <div className="grid grid-cols-2 gap-8">
-                  {[
-                    { value: "100%", label: "FOCO NO CLIENTE" },
-                    { value: "98%", label: "SATISFAÇÃO" },
-                    { value: "PME", label: "ESPECIALISTAS" },
-                    { value: "∞", label: "ESCALABILIDADE" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="bg-white rounded-2xl p-6">
-                      <span className="block text-3xl font-black text-[#191c1e] font-[family-name:var(--font-display)]">
-                        {stat.value}
-                      </span>
-                      <span className="text-xs text-[#191c1e]/40 font-bold tracking-widest">{stat.label}</span>
-                    </div>
-                  ))}
-                </div>
+            <div className="relative overflow-hidden rounded-3xl aspect-[4/3]">
+              <div className="absolute inset-x-[-3%] bottom-0 top-0">
+                <Image
+                  src={mountainImage}
+                  alt="Montanha abstrata azul representando a solidez e a evolução da ZION"
+                  fill
+                  className="object-contain object-bottom"
+                  priority={false}
+                />
               </div>
             </div>
 
