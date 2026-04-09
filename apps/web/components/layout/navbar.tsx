@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
 import { Bars3Icon, XMarkIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
 import { cn } from "@workspace/ui/lib/utils"
@@ -37,14 +38,26 @@ export function Navbar() {
         )}
       >
         {/* Logo — left column */}
-        <Link
-          href="#hero"
-          className={cn(
-            "text-2xl font-black tracking-tighter font-[family-name:var(--font-display)] transition-colors duration-500 justify-self-start",
-            scrolled ? "text-[#191c1e]" : "text-white"
-          )}
-        >
-          ZION
+        <Link href="#hero" className="justify-self-start flex items-center gap-2">
+          <Image
+            src="/logo.png"
+            alt="ZION"
+            width={36}
+            height={36}
+            className={cn(
+              "transition-all duration-500",
+              scrolled ? "brightness-100" : "brightness-200"
+            )}
+            priority
+          />
+          <span
+            className={cn(
+              "text-2xl font-black tracking-tighter font-[family-name:var(--font-display)] transition-colors duration-500",
+              scrolled ? "text-[#191c1e]" : "text-white"
+            )}
+          >
+            ZION
+          </span>
         </Link>
 
         {/* Desktop nav — center column, truly centered */}

@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { footer } from "@/lib/content"
 
 export function Footer() {
@@ -10,9 +11,12 @@ export function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Brand */}
         <div className="flex flex-col gap-3">
-          <span className="text-3xl font-black tracking-tighter font-[family-name:var(--font-display)]">
-            {footer.brand}
-          </span>
+          <Link href="#hero" className="flex items-center gap-2">
+            <Image src="/logo.png" alt="ZION" width={32} height={32} className="brightness-200" />
+            <span className="text-3xl font-black tracking-tighter font-[family-name:var(--font-display)]">
+              {footer.brand}
+            </span>
+          </Link>
           <p className="text-white/50 text-sm leading-relaxed">
             {footer.tagline}
           </p>
