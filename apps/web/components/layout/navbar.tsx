@@ -81,14 +81,19 @@ export function Navbar() {
           <Link
             href="#contato"
             className={cn(
-              "group hidden md:inline-flex items-center gap-2.5 pl-5 pr-1.5 py-1.5 rounded-full font-semibold text-xs transition-all duration-200 hover:scale-105 active:scale-95",
+              "group hidden md:inline-flex items-center gap-2.5 pl-5 pr-1.5 py-1.5 rounded-full font-semibold text-xs transition-all duration-300 hover:scale-105 active:scale-95",
               scrolled
-                ? "bg-white text-[#191c1e] shadow-[0_2px_12px_rgba(0,0,0,0.10)]"
+                ? "bg-[#0049db] text-white shadow-[0_4px_20px_rgba(0,73,219,0.30)]"
                 : "bg-white text-[#191c1e] shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
             )}
           >
             <span className="tracking-widest font-bold">SOLICITAR ORÇAMENTO</span>
-            <span className="flex items-center justify-center w-7 h-7 rounded-full bg-[#0049db] text-white group-hover:bg-[#2962ff] transition-colors duration-200 shrink-0">
+            <span className={cn(
+              "flex items-center justify-center w-7 h-7 rounded-full transition-colors duration-300 shrink-0",
+              scrolled
+                ? "bg-white text-[#0049db] group-hover:bg-[#e8f0ff]"
+                : "bg-[#0049db] text-white group-hover:bg-[#2962ff]"
+            )}>
               <ArrowRightIcon className="size-3.5" />
             </span>
           </Link>
