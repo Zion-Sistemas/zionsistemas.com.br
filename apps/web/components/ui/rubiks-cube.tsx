@@ -2,421 +2,362 @@
 
 import { useRef, useMemo, useState, useCallback } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
-import { RoundedBox, Environment, useTexture } from "@react-three/drei"
+import { RoundedBox, Environment } from "@react-three/drei"
 import * as THREE from "three"
 
-const CUBE_SIZE = 0.95
-const GAP = 0.05
+// ─── Constants ────────────────────────────────────────────────────────────────
+const CUBE_SIZE  = 0.88
+const GAP        = 0.12
 const TOTAL_SIZE = CUBE_SIZE + GAP
+const FACE_SIZE  = 0.76
+const FACE_INSET = 0.445
 
-// Single metallic blue color
-const FACE_COLOR = "#0049DB"
-
-// Animation types for slice rotations
+// ─── Types ────────────────────────────────────────────────────────────────────
 type Axis = "x" | "y" | "z"
-type SliceAnimation = {
-  axis: Axis
-  layer: number
-  direction: 1 | -1
-  progress: number
+type SliceAnim = { axis: Axis; layer: number; direction: 1 | -1; progress: number }
+
+// ─── Easing ───────────────────────────────────────────────────────────────────
+function easeInOutCubic(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 }
 
-interface CubieFaceProps {
+// ─── Procedural textures ──────────────────────────────────────────────────────
+function makeCarbonTexture(): THREE.CanvasTexture {
+  const S = 256
+  const canvas = document.createElement("canvas")
+  canvas.width = canvas.height = S
+  const ctx = canvas.getContext("2d")!
+
+  ctx.fillStyle = "#080808"
+  ctx.fillRect(0, 0, S, S)
+
+  const fw = 8, fh = 8
+  for (let row = 0; row < Math.ceil(S / fh); row++) {
+    for (let col = 0; col < Math.ceil(S / fw); col++) {
+      const x = col * fw, y = row * fh
+      const even = (row + col) % 2 === 0
+      const g = even
+        ? ctx.createLinearGradient(x, y, x + fw, y + fh)
+        : ctx.createLinearGradient(x + fw, y, x, y + fh)
+
+      if (even) {
+        g.addColorStop(0,    "#0e0e0e")
+        g.addColorStop(0.38, "#242424")
+        g.addColorStop(0.62, "#1e1e1e")
+        g.addColorStop(1,    "#080808")
+      } else {
+        g.addColorStop(0,    "#080808")
+        g.addColorStop(0.38, "#1a1a1a")
+        g.addColorStop(0.62, "#161616")
+        g.addColorStop(1,    "#050505")
+      }
+      ctx.fillStyle = g
+      ctx.fillRect(x, y, fw, fh)
+    }
+  }
+
+  ctx.strokeStyle = "#030303"
+  ctx.lineWidth = 0.5
+  for (let i = 0; i <= S; i += fw) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, S); ctx.stroke() }
+  for (let i = 0; i <= S; i += fh) { ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(S, i); ctx.stroke() }
+
+  const tex = new THREE.CanvasTexture(canvas)
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping
+  tex.repeat.set(3, 3)
+  return tex
+}
+
+function makeFaceTexture(): THREE.CanvasTexture {
+  const S = 256
+  const canvas = document.createElement("canvas")
+  canvas.width = canvas.height = S
+  const ctx = canvas.getContext("2d")!
+
+  ctx.fillStyle = "#002fa8"
+  ctx.fillRect(0, 0, S, S)
+
+  const fw = 8, fh = 8
+  for (let row = 0; row < Math.ceil(S / fh); row++) {
+    for (let col = 0; col < Math.ceil(S / fw); col++) {
+      const x = col * fw, y = row * fh
+      const even = (row + col) % 2 === 0
+      const g = even
+        ? ctx.createLinearGradient(x, y, x + fw, y + fh)
+        : ctx.createLinearGradient(x + fw, y, x, y + fh)
+
+      if (even) {
+        g.addColorStop(0,    "#003acc")
+        g.addColorStop(0.38, "#0057ff")
+        g.addColorStop(0.62, "#004de8")
+        g.addColorStop(1,    "#0028a0")
+      } else {
+        g.addColorStop(0,    "#001e80")
+        g.addColorStop(0.38, "#0040cc")
+        g.addColorStop(0.62, "#0038b8")
+        g.addColorStop(1,    "#001460")
+      }
+      ctx.fillStyle = g
+      ctx.fillRect(x, y, fw, fh)
+    }
+  }
+
+  ctx.strokeStyle = "#001060"
+  ctx.lineWidth = 0.5
+  for (let i = 0; i <= S; i += fw) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, S); ctx.stroke() }
+  for (let i = 0; i <= S; i += fh) { ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(S, i); ctx.stroke() }
+
+  const tex = new THREE.CanvasTexture(canvas)
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping
+  tex.repeat.set(4, 4)
+  return tex
+}
+
+// ─── Cubie materials (shared via context) ─────────────────────────────────────
+function useCubieMaterials() {
+  return useMemo(() => {
+    const carbonTex = makeCarbonTexture()
+    const faceTex   = makeFaceTexture()
+    return { carbonTex, faceTex }
+  }, [])
+}
+
+// ─── Face sticker ─────────────────────────────────────────────────────────────
+interface FaceProps {
   position: [number, number, number]
   rotation: [number, number, number]
-  color: string
+  faceTexture: THREE.CanvasTexture
 }
 
-function CubieFace({ position, rotation, color }: CubieFaceProps) {
-  // Create a subtle brushed metal texture procedurally
-  const materialRef = useRef<THREE.MeshStandardMaterial>(null)
-
+function Face({ position, rotation, faceTexture }: FaceProps) {
   return (
     <mesh position={position} rotation={rotation}>
-      <planeGeometry args={[0.82, 0.82]} />
+      <planeGeometry args={[FACE_SIZE, FACE_SIZE]} />
       <meshStandardMaterial
-        ref={materialRef}
-        color={color}
-        roughness={0.25}
-        metalness={0.9}
-        envMapIntensity={1.2}
+        map={faceTexture}
+        roughness={0.12}
+        metalness={0.85}
+        envMapIntensity={1.4}
       />
     </mesh>
   )
 }
 
+// ─── Single cubie ─────────────────────────────────────────────────────────────
 interface CubieProps {
   position: [number, number, number]
   index: { x: number; y: number; z: number }
-  animatedRotation?: THREE.Euler
+  carbonTexture: THREE.CanvasTexture
+  faceTexture:   THREE.CanvasTexture
 }
 
-function Cubie({ position, index, animatedRotation }: CubieProps) {
-  const faces: {
-    position: [number, number, number]
-    rotation: [number, number, number]
-    color: string
-  }[] = []
+function Cubie({ position, index, carbonTexture, faceTexture }: CubieProps) {
+  const faces: { position: [number, number, number]; rotation: [number, number, number] }[] = []
 
-  // Only add faces that are on the outside of the cube
-  if (index.z === 1) {
-    faces.push({
-      position: [0, 0, 0.48],
-      rotation: [0, 0, 0],
-      color: FACE_COLOR,
-    })
-  }
-  if (index.z === -1) {
-    faces.push({
-      position: [0, 0, -0.48],
-      rotation: [0, Math.PI, 0],
-      color: FACE_COLOR,
-    })
-  }
-  if (index.y === 1) {
-    faces.push({
-      position: [0, 0.48, 0],
-      rotation: [-Math.PI / 2, 0, 0],
-      color: FACE_COLOR,
-    })
-  }
-  if (index.y === -1) {
-    faces.push({
-      position: [0, -0.48, 0],
-      rotation: [Math.PI / 2, 0, 0],
-      color: FACE_COLOR,
-    })
-  }
-  if (index.x === 1) {
-    faces.push({
-      position: [0.48, 0, 0],
-      rotation: [0, Math.PI / 2, 0],
-      color: FACE_COLOR,
-    })
-  }
-  if (index.x === -1) {
-    faces.push({
-      position: [-0.48, 0, 0],
-      rotation: [0, -Math.PI / 2, 0],
-      color: FACE_COLOR,
-    })
-  }
+  if (index.z ===  1) faces.push({ position: [0, 0,  FACE_INSET], rotation: [0,  0, 0] })
+  if (index.z === -1) faces.push({ position: [0, 0, -FACE_INSET], rotation: [0,  Math.PI, 0] })
+  if (index.y ===  1) faces.push({ position: [0,  FACE_INSET, 0], rotation: [-Math.PI / 2, 0, 0] })
+  if (index.y === -1) faces.push({ position: [0, -FACE_INSET, 0], rotation: [ Math.PI / 2, 0, 0] })
+  if (index.x ===  1) faces.push({ position: [ FACE_INSET, 0, 0], rotation: [0,  Math.PI / 2, 0] })
+  if (index.x === -1) faces.push({ position: [-FACE_INSET, 0, 0], rotation: [0, -Math.PI / 2, 0] })
 
   return (
-    <group position={position} rotation={animatedRotation}>
-      {/* Black base cube with subtle sheen */}
-      <RoundedBox
-        args={[CUBE_SIZE, CUBE_SIZE, CUBE_SIZE]}
-        radius={0.06}
-        smoothness={4}
-      >
+    <group position={position}>
+      <RoundedBox args={[CUBE_SIZE, CUBE_SIZE, CUBE_SIZE]} radius={0.055} smoothness={4}>
         <meshStandardMaterial
-          color="#0a0a0a"
-          roughness={0.4}
-          metalness={0.3}
-          envMapIntensity={0.5}
+          map={carbonTexture}
+          color="#131313"
+          roughness={0.18}
+          metalness={0.92}
+          envMapIntensity={1.8}
         />
       </RoundedBox>
-
-      {/* Colored faces */}
-      {faces.map((face, i) => (
-        <CubieFace key={i} {...face} />
+      {faces.map((f, i) => (
+        <Face key={i} {...f} faceTexture={faceTexture} />
       ))}
     </group>
   )
 }
 
-interface RubiksCubeGroupProps {
+// ─── Cube group (rotation + slice animation) ──────────────────────────────────
+interface CubeGroupProps {
   isDragging: boolean
   dragDelta: { x: number; y: number }
-  onDragEnd: () => void
 }
 
-function RubiksCubeGroup({
-  isDragging,
-  dragDelta,
-  onDragEnd,
-}: RubiksCubeGroupProps) {
-  const groupRef = useRef<THREE.Group>(null)
-  const baseRotation = useRef({ x: 0.5, y: 0 })
-  const autoRotateSpeed = useRef(0.15)
+function CubeGroup({ isDragging, dragDelta }: CubeGroupProps) {
+  const groupRef     = useRef<THREE.Group>(null)
+  const baseRot      = useRef({ x: 0.55, y: 0.3 })
+  const { carbonTex: carbonTexture, faceTex: faceTexture } = useCubieMaterials()
 
-  // Slice animation state
-  const [sliceAnimation, setSliceAnimation] = useState<SliceAnimation | null>(
-    null
-  )
-  const sliceTimeout = useRef<NodeJS.Timeout | null>(null)
+  const [slice, setSlice] = useState<SliceAnim | null>(null)
+  const sliceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
-  // Generate all 26 outer cubies
   const cubies = useMemo(() => {
-    const positions: {
-      position: [number, number, number]
-      index: { x: number; y: number; z: number }
-    }[] = []
-
-    for (let x = -1; x <= 1; x++) {
-      for (let y = -1; y <= 1; y++) {
+    const out: { position: [number, number, number]; index: { x: number; y: number; z: number } }[] = []
+    for (let x = -1; x <= 1; x++)
+      for (let y = -1; y <= 1; y++)
         for (let z = -1; z <= 1; z++) {
-          // Skip the center cube (not visible)
           if (x === 0 && y === 0 && z === 0) continue
-
-          positions.push({
-            position: [x * TOTAL_SIZE, y * TOTAL_SIZE, z * TOTAL_SIZE],
-            index: { x, y, z },
-          })
+          out.push({ position: [x * TOTAL_SIZE, y * TOTAL_SIZE, z * TOTAL_SIZE], index: { x, y, z } })
         }
-      }
-    }
-
-    return positions
+    return out
   }, [])
 
-  // Trigger random slice animation periodically
-  const triggerSliceAnimation = useCallback(() => {
-    if (sliceAnimation) return
-
-    const axes: Axis[] = ["x", "y", "z"]
-    const axis = axes[Math.floor(Math.random() * axes.length)] as Axis
-    const layer = Math.floor(Math.random() * 3) - 1 // -1, 0, or 1
-    const direction = Math.random() > 0.5 ? 1 : -1
-
-    setSliceAnimation({
-      axis: axis,
-      layer,
-      direction,
-      progress: 0,
-    })
-  }, [sliceAnimation])
+  const scheduleSlice = useCallback(() => {
+    if (sliceTimer.current) return
+    sliceTimer.current = setTimeout(() => {
+      sliceTimer.current = null
+      const axes: Axis[] = ["x", "y", "z"]
+      setSlice({
+        axis:      axes[Math.floor(Math.random() * 3)] as Axis,
+        layer:     Math.floor(Math.random() * 3) - 1,
+        direction: Math.random() > 0.5 ? 1 : -1,
+        progress:  0,
+      })
+    }, 4000 + Math.random() * 4000)   // wait 4–8 s between slices
+  }, [])
 
   useFrame((state, delta) => {
     if (!groupRef.current) return
+    const t = state.clock.elapsedTime
 
-    const time = state.clock.elapsedTime
-
+    // Rotation input
     if (isDragging) {
-      // Apply drag rotation
-      baseRotation.current.x += dragDelta.y * 0.01
-      baseRotation.current.y += dragDelta.x * 0.01
-      autoRotateSpeed.current = 0.15
+      baseRot.current.x += dragDelta.y * 0.008
+      baseRot.current.y += dragDelta.x * 0.008
     } else {
-      // Smooth auto-rotation when not dragging
-      baseRotation.current.y += delta * autoRotateSpeed.current
+      baseRot.current.y += delta * 0.06   // slow, majestic auto-rotation
     }
 
-    // Apply base rotation with smooth interpolation
+    // Smooth lerp toward target rotation
     groupRef.current.rotation.x = THREE.MathUtils.lerp(
       groupRef.current.rotation.x,
-      baseRotation.current.x + Math.sin(time * 0.3) * 0.1,
-      0.1
+      baseRot.current.x + Math.sin(t * 0.25) * 0.06,
+      0.06
     )
     groupRef.current.rotation.y = THREE.MathUtils.lerp(
       groupRef.current.rotation.y,
-      baseRotation.current.y,
-      0.1
+      baseRot.current.y,
+      0.06
     )
 
-    // Subtle floating effect
-    groupRef.current.position.y = Math.sin(time * 0.5) * 0.08
+    // Gentle floating
+    groupRef.current.position.y = Math.sin(t * 0.4) * 0.07
 
-    // Update slice animation
-    if (sliceAnimation) {
-      const newProgress = sliceAnimation.progress + delta * 2.5
-      if (newProgress >= 1) {
-        setSliceAnimation(null)
+    // Advance slice animation
+    if (slice) {
+      // Speed: delta * 0.7 → ~1.4 s to complete 90°
+      const next = slice.progress + delta * 0.7
+      if (next >= 1) {
+        setSlice(null)
+        scheduleSlice()
       } else {
-        setSliceAnimation({ ...sliceAnimation, progress: newProgress })
+        setSlice({ ...slice, progress: next })
       }
-    }
-
-    // Trigger new slice animation periodically
-    if (!sliceAnimation && !sliceTimeout.current) {
-      sliceTimeout.current = setTimeout(
-        () => {
-          triggerSliceAnimation()
-          sliceTimeout.current = null
-        },
-        2000 + Math.random() * 2000
-      )
+    } else {
+      scheduleSlice()
     }
   })
 
-  // Calculate animated rotation for cubies in the animated slice
-  const getAnimatedRotation = (index: {
-    x: number
-    y: number
-    z: number
-  }): THREE.Euler | undefined => {
-    if (!sliceAnimation) return undefined
-
-    const { axis, layer, direction, progress } = sliceAnimation
-
-    // Check if this cubie is in the animated slice
-    if (index[axis] !== layer) return undefined
-
-    // Smooth easing
-    const eased = 1 - Math.pow(1 - progress, 3)
-    const angle = eased * (Math.PI / 2) * direction
-
-    const euler = new THREE.Euler()
-    if (axis === "x") euler.x = angle
-    if (axis === "y") euler.y = angle
-    if (axis === "z") euler.z = angle
-
-    return euler
+  const sliceEuler = (idx: { x: number; y: number; z: number }): THREE.Euler | undefined => {
+    if (!slice) return undefined
+    const { axis, layer, direction, progress } = slice
+    if (idx[axis] !== layer) return undefined
+    const angle = easeInOutCubic(progress) * (Math.PI / 2) * direction
+    const e = new THREE.Euler()
+    e[axis] = angle
+    return e
   }
 
   return (
-    <group ref={groupRef} scale={0.9}>
-      {cubies.map((cubie, i) => {
-        const animatedRotation = getAnimatedRotation(cubie.index)
-
-        if (animatedRotation) {
-          // Wrap animated cubies in a pivot group for slice rotation
-          const pivotPosition: [number, number, number] = [0, 0, 0]
-          return (
-            <group key={i} rotation={animatedRotation}>
-              <Cubie {...cubie} />
-            </group>
-          )
-        }
-
-        return <Cubie key={i} {...cubie} />
+    <group ref={groupRef} scale={0.92}>
+      {cubies.map((c, i) => {
+        const rot = sliceEuler(c.index)
+        return (
+          <group key={i} rotation={rot}>
+            <Cubie {...c} carbonTexture={carbonTexture} faceTexture={faceTexture} />
+          </group>
+        )
       })}
     </group>
   )
 }
 
-// Interactive controls component
-function DragControls({
-  onDragStart,
-  onDrag,
-  onDragEnd,
-}: {
-  onDragStart: () => void
-  onDrag: (delta: { x: number; y: number }) => void
-  onDragEnd: () => void
+// ─── Drag controls ────────────────────────────────────────────────────────────
+function DragControls({ onStart, onDrag, onEnd }: {
+  onStart: () => void
+  onDrag:  (d: { x: number; y: number }) => void
+  onEnd:   () => void
 }) {
   const { gl } = useThree()
-  const lastPos = useRef<{ x: number; y: number } | null>(null)
+  const last   = useRef<{ x: number; y: number } | null>(null)
 
-  const handlePointerDown = useCallback(
-    (e: PointerEvent) => {
-      lastPos.current = { x: e.clientX, y: e.clientY }
-      onDragStart()
-      gl.domElement.setPointerCapture(e.pointerId)
-    },
-    [gl.domElement, onDragStart]
-  )
+  const down = useCallback((e: PointerEvent) => {
+    last.current = { x: e.clientX, y: e.clientY }
+    onStart()
+    gl.domElement.setPointerCapture(e.pointerId)
+  }, [gl.domElement, onStart])
 
-  const handlePointerMove = useCallback(
-    (e: PointerEvent) => {
-      if (!lastPos.current) return
+  const move = useCallback((e: PointerEvent) => {
+    if (!last.current) return
+    onDrag({ x: e.clientX - last.current.x, y: e.clientY - last.current.y })
+    last.current = { x: e.clientX, y: e.clientY }
+  }, [onDrag])
 
-      const delta = {
-        x: e.clientX - lastPos.current.x,
-        y: e.clientY - lastPos.current.y,
-      }
-      lastPos.current = { x: e.clientX, y: e.clientY }
-      onDrag(delta)
-    },
-    [onDrag]
-  )
+  const up = useCallback((e: PointerEvent) => {
+    last.current = null
+    onEnd()
+    gl.domElement.releasePointerCapture(e.pointerId)
+  }, [gl.domElement, onEnd])
 
-  const handlePointerUp = useCallback(
-    (e: PointerEvent) => {
-      lastPos.current = null
-      onDragEnd()
-      gl.domElement.releasePointerCapture(e.pointerId)
-    },
-    [gl.domElement, onDragEnd]
-  )
-
-  // Attach event listeners
   useState(() => {
-    const canvas = gl.domElement
-    canvas.addEventListener("pointerdown", handlePointerDown)
-    canvas.addEventListener("pointermove", handlePointerMove)
-    canvas.addEventListener("pointerup", handlePointerUp)
-    canvas.addEventListener("pointerleave", handlePointerUp)
-
+    const el = gl.domElement
+    el.addEventListener("pointerdown",  down)
+    el.addEventListener("pointermove",  move)
+    el.addEventListener("pointerup",    up)
+    el.addEventListener("pointerleave", up)
     return () => {
-      canvas.removeEventListener("pointerdown", handlePointerDown)
-      canvas.removeEventListener("pointermove", handlePointerMove)
-      canvas.removeEventListener("pointerup", handlePointerUp)
-      canvas.removeEventListener("pointerleave", handlePointerUp)
+      el.removeEventListener("pointerdown",  down)
+      el.removeEventListener("pointermove",  move)
+      el.removeEventListener("pointerup",    up)
+      el.removeEventListener("pointerleave", up)
     }
   })
 
   return null
 }
 
-interface RubiksCubeProps {
-  className?: string
-}
-
-export function RubiksCube({ className = "" }: RubiksCubeProps) {
-  const [isDragging, setIsDragging] = useState(false)
-  const [dragDelta, setDragDelta] = useState({ x: 0, y: 0 })
+// ─── Public component ─────────────────────────────────────────────────────────
+export function RubiksCube({ className = "" }: { className?: string }) {
+  const [dragging, setDragging] = useState(false)
+  const [delta,    setDelta]    = useState({ x: 0, y: 0 })
 
   return (
-    <div
-      className={`h-full w-full ${className}`}
-      style={{ cursor: isDragging ? "grabbing" : "grab" }}
-    >
+    <div className={`w-full h-full ${className}`} style={{ cursor: dragging ? "grabbing" : "grab" }}>
       <Canvas
-        camera={{ position: [4.5, 3.5, 4.5], fov: 35 }}
-        gl={{
-          antialias: true,
-          alpha: true,
-          powerPreference: "high-performance",
-        }}
+        camera={{ position: [4.2, 3.2, 4.2], fov: 34 }}
+        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         style={{ background: "transparent" }}
       >
-        {/* Main key light - warm */}
-        <directionalLight position={[8, 10, 5]} intensity={2} color="#ffffff" />
+        {/* Strong key light — upper left, warm white */}
+        <directionalLight position={[-7, 9, 4]}  intensity={3.5}  color="#ffffff" />
+        {/* Cool fill from right */}
+        <directionalLight position={[6, 2, -3]}  intensity={0.5}  color="#8ab0ff" />
+        {/* Rim light from below-back */}
+        <directionalLight position={[0, -5, -7]} intensity={0.25} color="#ffffff" />
+        {/* Very low ambient so dark faces stay dark */}
+        <ambientLight intensity={0.12} />
 
-        {/* Fill light - cool blue tint */}
-        <directionalLight
-          position={[-6, 4, -4]}
-          intensity={0.8}
-          color="#a0c4ff"
-        />
-
-        {/* Rim light - adds edge definition */}
-        <directionalLight
-          position={[0, -5, 8]}
-          intensity={0.6}
-          color="#ffffff"
-        />
-
-        {/* Top accent light */}
-        <pointLight
-          position={[0, 8, 0]}
-          intensity={0.5}
-          color="#0049db"
-          distance={15}
-        />
-
-        {/* Ambient fill */}
-        <ambientLight intensity={0.3} />
-
-        <RubiksCubeGroup
-          isDragging={isDragging}
-          dragDelta={dragDelta}
-          onDragEnd={() => setDragDelta({ x: 0, y: 0 })}
-        />
+        <CubeGroup isDragging={dragging} dragDelta={delta} />
 
         <DragControls
-          onDragStart={() => setIsDragging(true)}
-          onDrag={(delta) => setDragDelta(delta)}
-          onDragEnd={() => {
-            setIsDragging(false)
-            setDragDelta({ x: 0, y: 0 })
-          }}
+          onStart={() => setDragging(true)}
+          onDrag={(d) => setDelta(d)}
+          onEnd={() => { setDragging(false); setDelta({ x: 0, y: 0 }) }}
         />
 
-        {/* Studio environment for nice reflections */}
-        <Environment preset="studio" />
+        {/* High-quality environment for carbon-fiber reflections */}
+        <Environment preset="warehouse" />
       </Canvas>
     </div>
   )
