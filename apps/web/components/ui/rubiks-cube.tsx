@@ -10,7 +10,7 @@ const CUBE_SIZE  = 0.88
 const GAP        = 0.12
 const TOTAL_SIZE = CUBE_SIZE + GAP
 const FACE_SIZE  = 0.76
-const FACE_INSET = 0.445
+const FACE_INSET = 0.47   // clear of box surface (box half = 0.44) to prevent Z-fighting
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Axis = "x" | "y" | "z"
@@ -137,6 +137,9 @@ function Face({ position, rotation, faceTexture }: FaceProps) {
         roughness={0.12}
         metalness={0.85}
         envMapIntensity={1.4}
+        polygonOffset
+        polygonOffsetFactor={-2}
+        polygonOffsetUnits={-2}
       />
     </mesh>
   )
