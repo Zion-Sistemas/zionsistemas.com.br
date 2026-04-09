@@ -101,7 +101,7 @@
     --on-surface-variant: oklch(0.314 0.019 264); /* #434656 */
 
     /* On-dark surfaces — semantic text hierarchy for navy/dark bg */
-    --on-dark-secondary: oklch(0.67 0.04 234);       /* #8aa3bb – body secondary, ~6:1 on #0d1c32 */
+    --on-dark-secondary: oklch(0.82 0.03 234);       /* ~#b8d0e4 – body secondary, high contrast on #0d1c32 */
     --on-dark-muted:     oklch(0.50 0.04 234);       /* #5e7a90 – captions & subtle labels */
     --on-dark-ghost:     oklch(1 0 0 / 8%);          /* purely decorative ghost text */
 
@@ -197,12 +197,16 @@
 }
 
 @layer base {
+    html {
+        overflow-x: hidden;
+    }
     * {
         @apply border-border outline-ring/50;
     }
     body {
         @apply bg-background text-foreground;
         font-family: var(--font-body, 'Inter', sans-serif);
+        overflow-x: hidden;
     }
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--font-display, 'Plus Jakarta Sans', sans-serif);

@@ -13,7 +13,7 @@ import Balancer from "react-wrap-balancer"
 
 export function ServicesSection() {
   return (
-    <section id="servicos" className="bg-[#f2f4f6] px-6 py-32">
+    <section id="servicos" className="bg-[#f2f4f6] px-8 sm:px-12 py-32">
       <div className="mx-auto max-w-5xl">
         {/* Header */}
         <motion.div

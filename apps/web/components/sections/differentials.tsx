@@ -6,7 +6,7 @@ import Balancer from "react-wrap-balancer"
 
 export function DifferentialsSection() {
   return (
-    <section className="overflow-hidden bg-[#0d1c32] px-6 py-32">
+    <section className="overflow-hidden bg-[#0d1c32] px-8 sm:px-12 py-32">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-start gap-20 lg:grid-cols-2">
           {/* Left — headline */}

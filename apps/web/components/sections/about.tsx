@@ -9,7 +9,7 @@ import mountainImage from "@/assets/mountain.png"
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="bg-[#f7f9fb] px-6 py-32">
+    <section id="sobre" className="bg-[#f7f9fb] px-8 sm:px-12 py-32">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
           {/* Text side */}

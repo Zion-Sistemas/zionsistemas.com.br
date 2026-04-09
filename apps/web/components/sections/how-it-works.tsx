@@ -6,7 +6,7 @@ import Balancer from "react-wrap-balancer"
 
 export function HowItWorksSection() {
   return (
-    <section id="como-funciona" className="bg-[#f7f9fb] px-6 py-32">
+    <section id="como-funciona" className="bg-[#f7f9fb] px-8 sm:px-12 py-32">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <motion.div

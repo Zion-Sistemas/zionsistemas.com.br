@@ -93,7 +93,7 @@ export function Navbar() {
               )}
             >
               <span className="font-bold tracking-widest">
-                SOLICITAR ORÇAMENTO
+                FALAR COM UM CONSULTOR
               </span>
               <span
                 className={cn(
@@ -152,7 +152,7 @@ export function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className="mt-2 rounded-full bg-[#0049db] px-6 py-3 text-center text-xs font-bold tracking-widest text-white transition-colors hover:bg-[#2962ff]"
               >
-                SOLICITAR ORÇAMENTO
+              FALAR COM UM CONSULTOR
               </Link>
             ) : null}
           </motion.div>

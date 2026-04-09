@@ -11,7 +11,7 @@ import { faq } from "@/lib/content"
 
 export function FaqSection() {
   return (
-    <section className="bg-[#0d1c32] px-6 py-32">
+    <section className="bg-[#0d1c32] px-8 sm:px-12 py-32">
       <div className="mx-auto max-w-3xl">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

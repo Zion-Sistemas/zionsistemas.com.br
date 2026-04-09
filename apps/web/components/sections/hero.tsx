@@ -34,8 +34,7 @@ const item = {
 
 export function HeroSection() {
   return (
-    <section
-      id="hero"
+    <section id="hero"
       className="relative flex min-h-screen items-center overflow-hidden bg-[#0d1c32] pt-28 pb-20"
     >
       {/* Subtle ambient glow behind the Spline canvas */}
@@ -44,7 +43,7 @@ export function HeroSection() {
         <div className="absolute bottom-[-10%] left-[-5%] h-1/3 w-1/3 rounded-full bg-blue-600/5 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:px-8">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-8 lg:grid-cols-2 lg:px-12">
         <motion.div
           variants={container}
           initial="hidden"

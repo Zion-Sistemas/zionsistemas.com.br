@@ -3,7 +3,7 @@ export const hero = {
   headline: "Construa sistemas que fazem seu negócio crescer",
   subheadline:
     "Desenvolvemos softwares, automações e soluções digitais sob medida para empresas que querem escalar com eficiência e controle.",
-  ctaPrimary: { label: "Solicitar orçamento", href: "#contato" },
+  ctaPrimary: { label: "Falar com um Consultor", href: "/contact" },
   ctaSecondary: { label: "Ver como funciona", href: "#como-funciona" },
 }
 
@@ -135,7 +135,7 @@ export const results = {
 export const ctaMid = {
   headline: "Pare de adaptar seu negócio a ferramentas limitadas.",
   subheadline: "Comece a usar sistemas feitos para você.",
-  cta: { label: "Solicitar orçamento", href: "#contato" },
+  cta: { label: "Falar com um Consultor", href: "/contact" },
 }
 
 export const faq = {
@@ -168,7 +168,7 @@ export const faq = {
 export const ctaFinal = {
   headline: "Pronto para estruturar seu crescimento?",
   body: "Se você quer parar de improvisar e começar a escalar com organização, a ZION pode construir isso com você.",
-  cta: { label: "Falar com especialista", href: "#contato" },
+  cta: { label: "Falar com especialista", href: "/contact" },
 }
 
 export const footer = {

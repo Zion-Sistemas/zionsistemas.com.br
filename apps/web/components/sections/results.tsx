@@ -24,7 +24,7 @@ export function ResultsSection() {
   return (
     <section
       id="resultados"
-      className="overflow-hidden bg-[#0d1c32] px-6 py-32"
+      className="overflow-hidden bg-[#0d1c32] px-8 sm:px-12 py-32"
     >
       <div className="mx-auto max-w-7xl">
         {/* ── Header ─────────────────────────────────────────────────── */}

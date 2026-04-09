@@ -10,7 +10,7 @@ export function CtaFinalSection() {
   return (
     <section
       id="contato"
-      className="relative overflow-hidden bg-[#050b14] px-6 py-32"
+      className="relative overflow-hidden bg-[#050b14] px-8 sm:px-12 py-32"
     >
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <motion.div
