@@ -273,7 +273,7 @@ function CubeGroup({ isDragging, dragDelta }: CubeGroupProps) {
   }
 
   return (
-    <group ref={groupRef} scale={0.92}>
+    <group ref={groupRef} scale={0.75}>
       {cubies.map((c, i) => {
         const rot = sliceEuler(c.index)
         // Always pass explicit rotation — `undefined` does NOT reset R3F groups,
