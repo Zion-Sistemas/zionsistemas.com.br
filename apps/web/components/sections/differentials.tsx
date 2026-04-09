@@ -6,21 +6,24 @@ import Balancer from "react-wrap-balancer"
 
 export function DifferentialsSection() {
   return (
-    <section className="py-32 px-6 bg-[#0d1c32] overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+    <section className="overflow-hidden bg-[#0d1c32] px-6 py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 items-start gap-20 lg:grid-cols-2">
           {/* Left — headline */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            transition={{
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+            }}
           >
-            <p className="text-xs font-black tracking-[0.2em] text-blue-400 mb-6 font-[family-name:var(--font-display)]">
+            <p className="mb-6 font-[family-name:var(--font-display)] text-xs font-black tracking-[0.2em] text-blue-400">
               {differentials.label}
             </p>
             <h2
-              className="text-4xl md:text-6xl font-black text-white leading-tight font-[family-name:var(--font-display)]"
+              className="font-[family-name:var(--font-display)] text-4xl leading-tight font-black text-white md:text-6xl"
               style={{ letterSpacing: "-0.02em" }}
             >
               <Balancer>{differentials.headline}</Balancer>
@@ -35,17 +38,23 @@ export function DifferentialsSection() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                transition={{
+                  duration: 0.6,
+                  delay: i * 0.1,
+                  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+                }}
                 className="flex gap-6"
               >
-                <span className="text-[#0049db] font-black text-2xl font-[family-name:var(--font-display)] shrink-0 w-8">
+                <span className="w-8 shrink-0 font-[family-name:var(--font-display)] text-2xl font-black text-[#0049db]">
                   {item.number}
                 </span>
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2 font-[family-name:var(--font-display)]">
+                  <h3 className="mb-2 font-[family-name:var(--font-display)] text-xl font-bold text-white">
                     {item.title}
                   </h3>
-                  <p className="text-on-dark-secondary leading-relaxed">{item.description}</p>
+                  <p className="leading-relaxed text-on-dark-secondary">
+                    {item.description}
+                  </p>
                 </div>
               </motion.div>
             ))}

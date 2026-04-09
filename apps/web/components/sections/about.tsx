@@ -9,27 +9,33 @@ import mountainImage from "@/assets/mountain.png"
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="py-32 px-6 bg-[#f7f9fb]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+    <section id="sobre" className="bg-[#f7f9fb] px-6 py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
           {/* Text side */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            transition={{
+              duration: 0.7,
+              ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+            }}
           >
-            <p className="text-xs font-black tracking-[0.2em] text-[#0049db] mb-5 font-[family-name:var(--font-display)]">
+            <p className="mb-5 font-[family-name:var(--font-display)] text-xs font-black tracking-[0.2em] text-[#0049db]">
               {about.label}
             </p>
             <h2
-              className="text-4xl md:text-5xl font-black text-[#191c1e] leading-tight mb-8 font-[family-name:var(--font-display)]"
+              className="mb-8 font-[family-name:var(--font-display)] text-4xl leading-tight font-black text-[#191c1e] md:text-5xl"
               style={{ letterSpacing: "-0.02em" }}
             >
               <Balancer>{about.headline}</Balancer>
             </h2>
             {about.body.map((p, i) => (
-              <p key={i} className="text-[#191c1e]/70 text-lg leading-relaxed mb-5">
+              <p
+                key={i}
+                className="mb-5 text-lg leading-relaxed text-[#191c1e]/70"
+              >
                 {p}
               </p>
             ))}
@@ -37,8 +43,11 @@ export function AboutSection() {
             {/* Bullets */}
             <ul className="mt-6 space-y-3">
               {about.bullets.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-[#191c1e]/80">
-                  <CheckCircleIcon className="size-5 text-[#0049db] shrink-0" />
+                <li
+                  key={b}
+                  className="flex items-center gap-3 text-[#191c1e]/80"
+                >
+                  <CheckCircleIcon className="size-5 shrink-0 text-[#0049db]" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -50,12 +59,16 @@ export function AboutSection() {
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+            transition={{
+              duration: 0.7,
+              delay: 0.1,
+              ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+            }}
             className="relative"
           >
             {/* Background card */}
-            <div className="relative overflow-hidden rounded-3xl aspect-[4/3]">
-              <div className="absolute inset-x-[-3%] bottom-0 top-0">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+              <div className="absolute inset-x-[-3%] top-0 bottom-0">
                 <Image
                   src={mountainImage}
                   alt="Montanha abstrata azul representando a solidez e a evolução da ZION"
@@ -67,11 +80,14 @@ export function AboutSection() {
             </div>
 
             {/* Floating testimonial */}
-            <div className="absolute -bottom-6 -left-6 bg-[#0049db] rounded-2xl p-6 max-w-xs">
-              <p className="text-white font-bold text-sm leading-snug">
-                "A ZION estruturou nossa operação e nos deu clareza para crescer."
+            <div className="absolute -bottom-6 -left-6 max-w-xs rounded-2xl bg-[#0049db] p-6">
+              <p className="text-sm leading-snug font-bold text-white">
+                "A ZION estruturou nossa operação e nos deu clareza para
+                crescer."
               </p>
-              <p className="text-on-dark-secondary text-xs mt-3">— CEO, Empresa Parceira</p>
+              <p className="mt-3 text-xs text-on-dark-secondary">
+                — CEO, Empresa Parceira
+              </p>
             </div>
           </motion.div>
         </div>

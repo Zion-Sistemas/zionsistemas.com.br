@@ -8,30 +8,36 @@ import { ctaFinal } from "@/lib/content"
 
 export function CtaFinalSection() {
   return (
-    <section id="contato" className="py-32 px-6 bg-[#050b14] relative overflow-hidden">
-      <div className="relative z-10 max-w-3xl mx-auto text-center">
+    <section
+      id="contato"
+      className="relative overflow-hidden bg-[#050b14] px-6 py-32"
+    >
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+          transition={{
+            duration: 0.7,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+          }}
           className="space-y-6"
         >
           <h2
-            className="text-4xl md:text-6xl font-black text-white font-[family-name:var(--font-display)]"
+            className="font-[family-name:var(--font-display)] text-4xl font-black text-white md:text-6xl"
             style={{ letterSpacing: "-0.02em" }}
           >
             <Balancer>{ctaFinal.headline}</Balancer>
           </h2>
-          <p className="text-on-dark-secondary text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="mx-auto max-w-xl text-lg leading-relaxed text-on-dark-secondary">
             <Balancer>{ctaFinal.body}</Balancer>
           </p>
           <Link
             href={ctaFinal.cta.href}
-            className="group inline-flex items-center gap-3 bg-white text-[#191c1e] pl-6 pr-2 py-2 rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform duration-200"
+            className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-sm font-semibold text-[#191c1e] transition-transform duration-200 hover:scale-105 active:scale-95"
           >
             {ctaFinal.cta.label}
-            <span className="flex items-center justify-center w-9 h-9 rounded-full bg-[#0049db] text-white group-hover:bg-[#2962ff] transition-colors duration-200 shrink-0">
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#0049db] text-white transition-colors duration-200 group-hover:bg-[#2962ff]">
               <ArrowRightIcon className="size-4" />
             </span>
           </Link>

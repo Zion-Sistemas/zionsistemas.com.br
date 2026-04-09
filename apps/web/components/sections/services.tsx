@@ -80,7 +80,12 @@ export function ServicesSection() {
           <Card className="relative col-span-full overflow-hidden border-0 bg-white sm:col-span-3 lg:col-span-2">
             <CardContent className="pt-6">
               <div className="relative mx-auto flex aspect-square size-32 rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
-                <svg className="m-auto h-fit w-24" viewBox="0 0 212 143" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  className="m-auto h-fit w-24"
+                  viewBox="0 0 212 143"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   {/* Full fingerprint ridges — visible blue-gray */}
                   <path
                     fill="#a8b4cc"
@@ -94,10 +99,20 @@ export function ServicesSection() {
                     />
                   </g>
                   {/* Electric Blue baseline */}
-                  <path d="M3 72H209" stroke="#0049db" strokeWidth="6" strokeLinecap="round" />
+                  <path
+                    d="M3 72H209"
+                    stroke="#0049db"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                  />
                   <defs>
                     <clipPath id="clip0_fp">
-                      <rect width="129" height="72" fill="white" transform="translate(41)" />
+                      <rect
+                        width="129"
+                        height="72"
+                        fill="white"
+                        transform="translate(41)"
+                      />
                     </clipPath>
                   </defs>
                 </svg>
@@ -136,8 +151,7 @@ export function ServicesSection() {
                     stroke="currentColor"
                     strokeWidth="3"
                   />
-                  <defs>
-                  </defs>
+                  <defs></defs>
                 </svg>
               </div>
               <div className="mt-6 space-y-2 text-center">
