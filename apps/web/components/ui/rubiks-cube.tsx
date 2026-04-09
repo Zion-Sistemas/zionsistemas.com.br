@@ -276,8 +276,13 @@ function CubeGroup({ isDragging, dragDelta }: CubeGroupProps) {
     <group ref={groupRef} scale={0.92}>
       {cubies.map((c, i) => {
         const rot = sliceEuler(c.index)
+        // Always pass explicit rotation — `undefined` does NOT reset R3F groups,
+        // leaving cubies stuck at their previous animated angle.
+        const eulerArray: [number, number, number] = rot
+          ? [rot.x, rot.y, rot.z]
+          : [0, 0, 0]
         return (
-          <group key={i} rotation={rot}>
+          <group key={i} rotation={eulerArray}>
             <Cubie {...c} carbonTexture={carbonTexture} faceTexture={faceTexture} />
           </group>
         )
