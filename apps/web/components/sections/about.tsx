@@ -77,7 +77,7 @@ export function AboutSection() {
               <p className="text-white font-bold text-sm leading-snug">
                 "A ZION estruturou nossa operação e nos deu clareza para crescer."
               </p>
-              <p className="text-white/50 text-xs mt-3">— CEO, Empresa Parceira</p>
+              <p className="text-on-dark-secondary text-xs mt-3">— CEO, Empresa Parceira</p>
             </div>
           </motion.div>
         </div>

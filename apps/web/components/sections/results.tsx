@@ -48,12 +48,12 @@ export function ResultsSection() {
             aria-hidden
           >
             <span
-              className="font-black text-white/8 font-[family-name:var(--font-display)] leading-none select-none"
+              className="font-black text-on-dark-ghost font-[family-name:var(--font-display)] leading-none select-none"
               style={{ fontSize: "clamp(80px, 10vw, 140px)", letterSpacing: "-0.04em" }}
             >
               {results.items.length}
             </span>
-            <span className="text-sm font-black tracking-[0.15em] text-white/30 mb-4 font-[family-name:var(--font-display)]">
+            <span className="text-sm font-black tracking-[0.15em] text-on-dark-muted mb-4 font-[family-name:var(--font-display)]">
               IMPACTOS
             </span>
           </motion.div>
@@ -88,14 +88,14 @@ export function ResultsSection() {
 
                 {/* Icon */}
                 {Icon && (
-                  <span className="shrink-0 text-white/25 group-hover:text-[#0049db] transition-colors duration-300">
+                  <span className="shrink-0 text-on-dark-muted group-hover:text-[#0049db] transition-colors duration-300">
                     <Icon className="size-5 md:size-6" />
                   </span>
                 )}
 
                 {/* Label */}
                 <span
-                  className="flex-1 font-black text-white/50 group-hover:text-white transition-colors duration-300 font-[family-name:var(--font-display)] leading-none"
+                  className="flex-1 font-black text-on-dark-secondary group-hover:text-white transition-colors duration-300 font-[family-name:var(--font-display)] leading-none"
                   style={{
                     fontSize: "clamp(1.4rem, 3vw, 2.5rem)",
                     letterSpacing: "-0.025em",

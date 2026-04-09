@@ -28,7 +28,7 @@ export function CtaFinalSection() {
           >
             <Balancer>{ctaFinal.headline}</Balancer>
           </h2>
-          <p className="text-white/50 text-lg max-w-xl mx-auto leading-relaxed">
+          <p className="text-on-dark-secondary text-lg max-w-xl mx-auto leading-relaxed">
             <Balancer>{ctaFinal.body}</Balancer>
           </p>
           <Link

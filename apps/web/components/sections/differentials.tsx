@@ -45,7 +45,7 @@ export function DifferentialsSection() {
                   <h3 className="text-xl font-bold text-white mb-2 font-[family-name:var(--font-display)]">
                     {item.title}
                   </h3>
-                  <p className="text-white/60 leading-relaxed">{item.description}</p>
+                  <p className="text-on-dark-secondary leading-relaxed">{item.description}</p>
                 </div>
               </motion.div>
             ))}

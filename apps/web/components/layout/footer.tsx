@@ -14,21 +14,21 @@ export function Footer() {
               {footer.brand}
             </span>
           </Link>
-          <p className="text-sm leading-relaxed text-white/50">
+          <p className="text-sm leading-relaxed text-on-dark-secondary">
             {footer.tagline}
           </p>
         </div>
 
         {/* Nav links */}
         <div className="flex flex-col gap-3">
-          <p className="mb-1 text-xs font-bold tracking-[0.15em] text-white/30 uppercase">
+          <p className="mb-1 text-xs font-bold tracking-[0.15em] text-on-dark-muted uppercase">
             Navegação
           </p>
           {footer.nav.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm text-white/60 transition-colors duration-200 hover:text-white"
+              className="text-sm text-on-dark-secondary transition-colors duration-200 hover:text-white"
             >
               {link.label}
             </Link>
@@ -37,12 +37,12 @@ export function Footer() {
 
         {/* Contact */}
         <div className="flex flex-col gap-3">
-          <p className="mb-1 text-xs font-bold tracking-[0.15em] text-white/30 uppercase">
+          <p className="mb-1 text-xs font-bold tracking-[0.15em] text-on-dark-muted uppercase">
             Contato
           </p>
           <Link
             href={footer.contact.email.href}
-            className="text-sm break-all text-white/60 transition-colors duration-200 hover:text-[#2962ff]"
+            className="text-sm break-all text-on-dark-secondary transition-colors duration-200 hover:text-[#2962ff]"
           >
             {footer.contact.email.label}
           </Link>
@@ -50,7 +50,7 @@ export function Footer() {
             href={footer.contact.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-white/60 transition-colors duration-200 hover:text-[#2962ff]"
+            className="text-sm text-on-dark-secondary transition-colors duration-200 hover:text-[#2962ff]"
           >
             {footer.contact.whatsapp.label}
           </Link>
@@ -58,7 +58,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-6 text-center">
-        <p className="text-xs text-white/30">{footer.copyright}</p>
+        <p className="text-xs text-on-dark-muted">{footer.copyright}</p>
       </div>
     </footer>
   )

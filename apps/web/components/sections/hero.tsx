@@ -48,7 +48,7 @@ export function HeroSection() {
           {/* Subheadline */}
           <motion.p
             variants={item}
-            className="text-lg text-white/60 max-w-lg leading-relaxed"
+            className="text-lg text-on-dark-secondary max-w-lg leading-relaxed"
           >
             <Balancer>{hero.subheadline}</Balancer>
           </motion.p>

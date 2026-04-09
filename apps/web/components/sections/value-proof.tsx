@@ -29,7 +29,7 @@ export function ValueProofSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed"
+          className="text-on-dark-secondary text-lg max-w-2xl mx-auto leading-relaxed"
         >
           {valueProof.body}
         </motion.p>

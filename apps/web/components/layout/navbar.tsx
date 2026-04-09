@@ -74,7 +74,7 @@ export function Navbar() {
                 "font-[family-name:var(--font-display)] text-[0.75rem] font-semibold tracking-[0.1em] transition-colors duration-500",
                 scrolled
                   ? "text-[#191c1e]/60 hover:text-[#191c1e]"
-                  : "text-white/70 hover:text-white"
+                  : "text-on-dark-secondary hover:text-white"
               )}
             >
               {link.label}

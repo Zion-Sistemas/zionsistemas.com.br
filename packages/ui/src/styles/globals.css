@@ -50,6 +50,11 @@
     --color-inverse-surface: var(--inverse-surface);
     --color-tertiary: var(--tertiary);
 
+    /* On-dark surface text hierarchy */
+    --color-on-dark-secondary: var(--on-dark-secondary);
+    --color-on-dark-muted:     var(--on-dark-muted);
+    --color-on-dark-ghost:     var(--on-dark-ghost);
+
     /* Radii */
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
@@ -94,6 +99,11 @@
     /* On-surface */
     --on-surface: oklch(0.147 0.007 247);      /* #191c1e */
     --on-surface-variant: oklch(0.314 0.019 264); /* #434656 */
+
+    /* On-dark surfaces — semantic text hierarchy for navy/dark bg */
+    --on-dark-secondary: oklch(0.67 0.04 234);       /* #8aa3bb – body secondary, ~6:1 on #0d1c32 */
+    --on-dark-muted:     oklch(0.50 0.04 234);       /* #5e7a90 – captions & subtle labels */
+    --on-dark-ghost:     oklch(1 0 0 / 8%);          /* purely decorative ghost text */
 
     /* Secondary / Navy */
     --secondary: oklch(0.43 0.041 243);        /* #515f78 */
