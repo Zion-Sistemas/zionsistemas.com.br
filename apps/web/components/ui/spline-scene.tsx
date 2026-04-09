@@ -9,7 +9,7 @@ function SplineInner() {
   return (
     /* mix-blend-mode:screen makes pure black transparent and preserves
        the bright gradient blobs — no background leaks through */
-    <div className="w-full h-full" style={{ mixBlendMode: "screen" }}>
+    <div className="h-full w-full" style={{ mixBlendMode: "screen" }}>
       <iframe
         src={VIEWER_URL}
         title="ZION gradient animation"
