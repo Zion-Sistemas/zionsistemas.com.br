@@ -4,7 +4,13 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
 import Balancer from "react-wrap-balancer"
-import { SplineScene } from "@/components/ui/spline-scene"
+import dynamic from "next/dynamic"
+import { Suspense } from "react"
+
+const RubiksCube = dynamic(
+  () => import("@/components/ui/rubiks-cube").then((m) => m.RubiksCube),
+  { ssr: false }
+)
 import { hero } from "@/lib/content"
 
 const container = {
@@ -70,7 +76,7 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Visual side — Spline 3D animation */}
+        {/* Visual side — Rubik's Cube 3D */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -78,7 +84,9 @@ export function HeroSection() {
           className="relative hidden lg:block w-full overflow-hidden"
           style={{ height: "520px" }}
         >
-          <SplineScene />
+          <Suspense fallback={null}>
+            <RubiksCube className="w-full h-full" />
+          </Suspense>
         </motion.div>
       </div>
     </section>
