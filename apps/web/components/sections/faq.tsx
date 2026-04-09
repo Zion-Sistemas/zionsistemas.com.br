@@ -11,7 +11,7 @@ import { faq } from "@/lib/content"
 
 export function FaqSection() {
   return (
-    <section className="py-32 px-6 bg-[#f7f9fb]">
+    <section className="py-32 px-6 bg-[#0d1c32]">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -24,7 +24,7 @@ export function FaqSection() {
             {faq.label}
           </p>
           <h2
-            className="text-4xl md:text-5xl font-black text-[#191c1e] font-[family-name:var(--font-display)]"
+            className="text-4xl md:text-5xl font-black text-white font-[family-name:var(--font-display)]"
             style={{ letterSpacing: "-0.02em" }}
           >
             {faq.headline}
@@ -42,12 +42,12 @@ export function FaqSection() {
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="bg-white rounded-2xl px-6 border-0 data-[state=open]:border data-[state=open]:border-[#0049db]/20"
+                className="bg-white/5 rounded-2xl px-6 border border-white/10 data-[state=open]:border-[#0049db]/40"
               >
-                <AccordionTrigger className="text-[#191c1e] font-semibold text-left py-5 hover:no-underline [&>svg]:text-[#0049db]">
+                <AccordionTrigger className="text-white font-semibold text-left py-5 hover:no-underline [&>svg]:text-[#0049db]">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-[#191c1e]/60 leading-relaxed pb-5">
+                <AccordionContent className="text-white/60 leading-relaxed pb-5">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>
