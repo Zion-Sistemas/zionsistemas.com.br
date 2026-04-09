@@ -85,8 +85,7 @@ export const differentials = {
     {
       number: "04",
       title: "Tecnologia moderna",
-      description:
-        "Utilizamos ferramentas e práticas atualizadas do mercado.",
+      description: "Utilizamos ferramentas e práticas atualizadas do mercado.",
     },
   ],
 }
@@ -176,13 +175,16 @@ export const footer = {
   brand: "ZION",
   tagline: "Desenvolvimento de software sob medida",
   nav: [
-    { label: "Início", href: "#hero" },
-    { label: "Serviços", href: "#servicos" },
-    { label: "Sobre", href: "#sobre" },
-    { label: "Contato", href: "#contato" },
+    { label: "Início", href: "/" },
+    { label: "Serviços", href: "/#servicos" },
+    { label: "Sobre", href: "/#sobre" },
+    { label: "Contato", href: "/contact" },
   ],
   contact: {
-    email: { label: "contato@zionsistemas.com.br", href: "mailto:contato@zionsistemas.com.br" },
+    email: {
+      label: "contato@zionsistemas.com.br",
+      href: "mailto:contato@zionsistemas.com.br",
+    },
     whatsapp: { label: "WhatsApp", href: "https://wa.me/5500000000000" },
   },
   copyright: "© 2026 ZION. Todos os direitos reservados.",

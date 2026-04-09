@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google"
 import { Provider as BalancerProvider } from "react-wrap-balancer"
 
 import "@workspace/ui/globals.css"
+import { QueryProvider } from "@/components/providers/query-provider"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@workspace/ui/lib/utils"
 
@@ -38,7 +39,9 @@ export default function RootLayout({
     >
       <body>
         <BalancerProvider>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </ThemeProvider>
         </BalancerProvider>
       </body>
     </html>

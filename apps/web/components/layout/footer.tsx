@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-3">
         {/* Brand */}
         <div className="flex flex-col gap-3">
-          <Link href="#hero" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.png" alt="ZION" width={32} height={32} />
             <span className="font-[family-name:var(--font-display)] text-3xl font-black tracking-tighter">
               {footer.brand}

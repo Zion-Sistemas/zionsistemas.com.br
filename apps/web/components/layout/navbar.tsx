@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import { AnimatePresence, motion } from "framer-motion"
 import {
   Bars3Icon,
@@ -13,15 +14,17 @@ import { cn } from "@workspace/ui/lib/utils"
 import { footer } from "@/lib/content"
 
 const navLinks = [
-  { label: "SOLUÇÕES", href: "#servicos" },
-  { label: "SOBRE", href: "#sobre" },
-  { label: "PROCESSO", href: "#como-funciona" },
-  { label: "RESULTADOS", href: "#resultados" },
+  { label: "SOLUÇÕES", href: "/#servicos" },
+  { label: "SOBRE", href: "/#sobre" },
+  { label: "PROCESSO", href: "/#como-funciona" },
+  { label: "RESULTADOS", href: "/#resultados" },
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const isContactPage = pathname === "/contact"
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -42,10 +45,7 @@ export function Navbar() {
         )}
       >
         {/* Logo — left column */}
-        <Link
-          href="#hero"
-          className="flex items-center gap-2 justify-self-start"
-        >
+        <Link href="/" className="flex items-center gap-2 justify-self-start">
           <Image
             src="/logo.png"
             alt="ZION"
@@ -84,29 +84,29 @@ export function Navbar() {
 
         {/* Desktop CTA — right column */}
         <div className="flex items-center justify-self-end">
-          <Link
-            href="#contato"
-            className={cn(
-              "group hidden items-center gap-2.5 rounded-full py-1.5 pr-1.5 pl-5 text-xs font-semibold transition-all duration-300 hover:scale-105 active:scale-95 md:inline-flex",
-              scrolled
-                ? "bg-[#0049db] text-white"
-                : "bg-white text-[#191c1e]"
-            )}
-          >
-            <span className="font-bold tracking-widest">
-              SOLICITAR ORÇAMENTO
-            </span>
-            <span
+          {!isContactPage ? (
+            <Link
+              href="/contact"
               className={cn(
-                "flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors duration-300",
-                scrolled
-                  ? "bg-white text-[#0049db] group-hover:bg-[#e8f0ff]"
-                  : "bg-[#0049db] text-white group-hover:bg-[#2962ff]"
+                "group hidden items-center gap-2.5 rounded-full py-1.5 pr-1.5 pl-5 text-xs font-semibold transition-all duration-300 hover:scale-105 active:scale-95 md:inline-flex",
+                scrolled ? "bg-[#0049db] text-white" : "bg-white text-[#191c1e]"
               )}
             >
-              <ArrowRightIcon className="size-3.5" />
-            </span>
-          </Link>
+              <span className="font-bold tracking-widest">
+                SOLICITAR ORÇAMENTO
+              </span>
+              <span
+                className={cn(
+                  "flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors duration-300",
+                  scrolled
+                    ? "bg-white text-[#0049db] group-hover:bg-[#e8f0ff]"
+                    : "bg-[#0049db] text-white group-hover:bg-[#2962ff]"
+                )}
+              >
+                <ArrowRightIcon className="size-3.5" />
+              </span>
+            </Link>
+          ) : null}
 
           {/* Mobile hamburger */}
           <button
@@ -146,13 +146,15 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="#contato"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 rounded-full bg-[#0049db] px-6 py-3 text-center text-xs font-bold tracking-widest text-white transition-colors hover:bg-[#2962ff]"
-            >
-              SOLICITAR ORÇAMENTO
-            </Link>
+            {!isContactPage ? (
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="mt-2 rounded-full bg-[#0049db] px-6 py-3 text-center text-xs font-bold tracking-widest text-white transition-colors hover:bg-[#2962ff]"
+              >
+                SOLICITAR ORÇAMENTO
+              </Link>
+            ) : null}
           </motion.div>
         )}
       </AnimatePresence>
