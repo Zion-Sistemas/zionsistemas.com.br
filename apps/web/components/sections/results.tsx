@@ -43,7 +43,7 @@ export function ResultsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="bg-white rounded-2xl p-8 flex flex-col items-center text-center gap-4 hover:scale-[1.02] hover:shadow-[0_20px_40px_rgba(0,73,219,0.08)] transition-all duration-300"
+              className="bg-white rounded-2xl p-8 flex flex-col items-center text-center gap-4 hover:scale-[1.02] transition-all duration-300"
             >
               <div className="text-[#0049db]">{iconMap[result.icon]}</div>
               <p className="font-bold text-[#191c1e] text-sm font-[family-name:var(--font-display)]">

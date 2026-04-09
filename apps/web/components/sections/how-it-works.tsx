@@ -30,7 +30,7 @@ export function HowItWorksSection() {
         {/* Steps */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {/* Connector line (desktop) */}
-          <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-transparent via-[#0049db]/30 to-transparent" />
+          <div className="hidden lg:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-[#0049db]/20" />
 
           {howItWorks.steps.map((step, i) => (
             <motion.div
@@ -42,7 +42,7 @@ export function HowItWorksSection() {
               className="relative flex flex-col items-center text-center"
             >
               {/* Step indicator */}
-              <div className="relative z-10 w-20 h-20 rounded-full bg-white shadow-[0_8px_24px_rgba(0,73,219,0.10)] flex items-center justify-center mb-6">
+              <div className="relative z-10 w-20 h-20 rounded-full bg-white flex items-center justify-center mb-6">
                 <span className="text-2xl font-black text-[#0049db] font-[family-name:var(--font-display)]">
                   {step.number}
                 </span>

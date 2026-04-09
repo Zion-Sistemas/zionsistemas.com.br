@@ -4,7 +4,11 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { AnimatePresence, motion } from "framer-motion"
-import { Bars3Icon, XMarkIcon, ArrowRightIcon } from "@heroicons/react/24/outline"
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/24/outline"
 import { cn } from "@workspace/ui/lib/utils"
 import { footer } from "@/lib/content"
 
@@ -29,30 +33,30 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl",
-          "rounded-full px-6 py-3 grid grid-cols-[1fr_auto_1fr] items-center",
+          "fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2",
+          "grid grid-cols-[1fr_auto_1fr] items-center rounded-full px-6 py-3",
           "transition-all duration-500",
           scrolled
-            ? "bg-[#f7f9fb]/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,73,219,0.10)] ring-1 ring-[#c3c5d8]/40"
-            : "bg-transparent backdrop-blur-none shadow-none ring-0"
+            ? "bg-[#f7f9fb]/85 ring-1 ring-[#c3c5d8]/40 backdrop-blur-xl"
+            : "bg-transparent ring-0 backdrop-blur-none"
         )}
       >
         {/* Logo — left column */}
-        <Link href="#hero" className="justify-self-start flex items-center gap-2">
+        <Link
+          href="#hero"
+          className="flex items-center gap-2 justify-self-start"
+        >
           <Image
             src="/logo.png"
             alt="ZION"
             width={36}
             height={36}
-            className={cn(
-              "transition-all duration-500",
-              scrolled ? "brightness-100" : "brightness-200"
-            )}
+            className="transition-all duration-500"
             priority
           />
           <span
             className={cn(
-              "text-2xl font-black tracking-tighter font-[family-name:var(--font-display)] transition-colors duration-500",
+              "font-[family-name:var(--font-display)] text-2xl font-black tracking-tighter transition-colors duration-500",
               scrolled ? "text-[#191c1e]" : "text-white"
             )}
           >
@@ -61,14 +65,16 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav — center column, truly centered */}
-        <nav className="hidden md:flex gap-8 items-center justify-self-center">
+        <nav className="hidden items-center gap-8 justify-self-center md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               className={cn(
-                "font-[family-name:var(--font-display)] tracking-[0.1em] text-[0.75rem] font-semibold transition-colors duration-500",
-                scrolled ? "text-[#191c1e]/60 hover:text-[#191c1e]" : "text-white/70 hover:text-white"
+                "font-[family-name:var(--font-display)] text-[0.75rem] font-semibold tracking-[0.1em] transition-colors duration-500",
+                scrolled
+                  ? "text-[#191c1e]/60 hover:text-[#191c1e]"
+                  : "text-white/70 hover:text-white"
               )}
             >
               {link.label}
@@ -77,23 +83,27 @@ export function Navbar() {
         </nav>
 
         {/* Desktop CTA — right column */}
-        <div className="justify-self-end flex items-center">
+        <div className="flex items-center justify-self-end">
           <Link
             href="#contato"
             className={cn(
-              "group hidden md:inline-flex items-center gap-2.5 pl-5 pr-1.5 py-1.5 rounded-full font-semibold text-xs transition-all duration-300 hover:scale-105 active:scale-95",
+              "group hidden items-center gap-2.5 rounded-full py-1.5 pr-1.5 pl-5 text-xs font-semibold transition-all duration-300 hover:scale-105 active:scale-95 md:inline-flex",
               scrolled
-                ? "bg-[#0049db] text-white shadow-[0_4px_20px_rgba(0,73,219,0.30)]"
-                : "bg-white text-[#191c1e] shadow-[0_4px_20px_rgba(0,0,0,0.15)]"
+                ? "bg-[#0049db] text-white"
+                : "bg-white text-[#191c1e]"
             )}
           >
-            <span className="tracking-widest font-bold">SOLICITAR ORÇAMENTO</span>
-            <span className={cn(
-              "flex items-center justify-center w-7 h-7 rounded-full transition-colors duration-300 shrink-0",
-              scrolled
-                ? "bg-white text-[#0049db] group-hover:bg-[#e8f0ff]"
-                : "bg-[#0049db] text-white group-hover:bg-[#2962ff]"
-            )}>
+            <span className="font-bold tracking-widest">
+              SOLICITAR ORÇAMENTO
+            </span>
+            <span
+              className={cn(
+                "flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-colors duration-300",
+                scrolled
+                  ? "bg-white text-[#0049db] group-hover:bg-[#e8f0ff]"
+                  : "bg-[#0049db] text-white group-hover:bg-[#2962ff]"
+              )}
+            >
               <ArrowRightIcon className="size-3.5" />
             </span>
           </Link>
@@ -101,13 +111,17 @@ export function Navbar() {
           {/* Mobile hamburger */}
           <button
             className={cn(
-              "md:hidden p-1 transition-colors duration-500",
+              "p-1 transition-colors duration-500 md:hidden",
               scrolled ? "text-[#191c1e]" : "text-white"
             )}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <XMarkIcon className="size-6" /> : <Bars3Icon className="size-6" />}
+            {mobileOpen ? (
+              <XMarkIcon className="size-6" />
+            ) : (
+              <Bars3Icon className="size-6" />
+            )}
           </button>
         </div>
       </header>
@@ -120,14 +134,14 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="fixed top-20 left-4 right-4 z-40 rounded-2xl bg-[#f7f9fb]/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,73,219,0.12)] p-6 flex flex-col gap-5"
+            className="fixed top-20 right-4 left-4 z-40 flex flex-col gap-5 rounded-2xl bg-[#f7f9fb]/95 p-6 backdrop-blur-xl"
           >
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-[family-name:var(--font-display)] tracking-[0.1em] text-sm font-semibold text-[#191c1e]/70 hover:text-[#0049db] transition-colors"
+                className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-[0.1em] text-[#191c1e]/70 transition-colors hover:text-[#0049db]"
               >
                 {link.label}
               </Link>
@@ -135,7 +149,7 @@ export function Navbar() {
             <Link
               href="#contato"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 text-center bg-[#0049db] text-white px-6 py-3 rounded-full text-xs font-bold tracking-widest hover:bg-[#2962ff] transition-colors"
+              className="mt-2 rounded-full bg-[#0049db] px-6 py-3 text-center text-xs font-bold tracking-widest text-white transition-colors hover:bg-[#2962ff]"
             >
               SOLICITAR ORÇAMENTO
             </Link>

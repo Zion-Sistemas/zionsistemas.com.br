@@ -4,34 +4,31 @@ import { footer } from "@/lib/content"
 
 export function Footer() {
   return (
-    <footer
-      id="contato"
-      className="bg-[#0d1c32] text-white py-16 px-6"
-    >
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <footer id="contato" className="bg-[#0d1c32] px-6 py-16 text-white">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 md:grid-cols-3">
         {/* Brand */}
         <div className="flex flex-col gap-3">
           <Link href="#hero" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="ZION" width={32} height={32} className="brightness-200" />
-            <span className="text-3xl font-black tracking-tighter font-[family-name:var(--font-display)]">
+            <Image src="/logo.png" alt="ZION" width={32} height={32} />
+            <span className="font-[family-name:var(--font-display)] text-3xl font-black tracking-tighter">
               {footer.brand}
             </span>
           </Link>
-          <p className="text-white/50 text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-white/50">
             {footer.tagline}
           </p>
         </div>
 
         {/* Nav links */}
         <div className="flex flex-col gap-3">
-          <p className="text-xs font-bold tracking-[0.15em] text-white/30 uppercase mb-1">
+          <p className="mb-1 text-xs font-bold tracking-[0.15em] text-white/30 uppercase">
             Navegação
           </p>
           {footer.nav.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm text-white/60 hover:text-white transition-colors duration-200"
+              className="text-sm text-white/60 transition-colors duration-200 hover:text-white"
             >
               {link.label}
             </Link>
@@ -40,12 +37,12 @@ export function Footer() {
 
         {/* Contact */}
         <div className="flex flex-col gap-3">
-          <p className="text-xs font-bold tracking-[0.15em] text-white/30 uppercase mb-1">
+          <p className="mb-1 text-xs font-bold tracking-[0.15em] text-white/30 uppercase">
             Contato
           </p>
           <Link
             href={footer.contact.email.href}
-            className="text-sm text-white/60 hover:text-[#2962ff] transition-colors duration-200 break-all"
+            className="text-sm break-all text-white/60 transition-colors duration-200 hover:text-[#2962ff]"
           >
             {footer.contact.email.label}
           </Link>
@@ -53,15 +50,15 @@ export function Footer() {
             href={footer.contact.whatsapp.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-white/60 hover:text-[#2962ff] transition-colors duration-200"
+            className="text-sm text-white/60 transition-colors duration-200 hover:text-[#2962ff]"
           >
             {footer.contact.whatsapp.label}
           </Link>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/10 text-center">
-        <p className="text-white/30 text-xs">{footer.copyright}</p>
+      <div className="mx-auto mt-12 max-w-7xl border-t border-white/10 pt-6 text-center">
+        <p className="text-xs text-white/30">{footer.copyright}</p>
       </div>
     </footer>
   )

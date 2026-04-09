@@ -49,7 +49,7 @@ export function ServicesSection() {
           className="relative grid grid-cols-6 gap-3"
         >
           {/* Card 1 — Big stat: Sistemas sob medida */}
-          <Card className="relative col-span-full flex overflow-hidden border-0 bg-white shadow-[0_4px_20px_rgba(0,73,219,0.06)] lg:col-span-2">
+          <Card className="relative col-span-full flex overflow-hidden border-0 bg-white lg:col-span-2">
             <CardContent className="relative m-auto size-fit pt-6 text-center">
               <div className="relative flex h-24 w-56 items-center justify-center">
                 <svg
@@ -77,7 +77,7 @@ export function ServicesSection() {
           </Card>
 
           {/* Card 2 — Automação de Processos */}
-          <Card className="relative col-span-full overflow-hidden border-0 bg-white shadow-[0_4px_20px_rgba(0,73,219,0.06)] sm:col-span-3 lg:col-span-2">
+          <Card className="relative col-span-full overflow-hidden border-0 bg-white sm:col-span-3 lg:col-span-2">
             <CardContent className="pt-6">
               <div className="relative mx-auto flex aspect-square size-32 rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
                 <svg className="m-auto h-fit w-24" viewBox="0 0 212 143" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,10 +96,6 @@ export function ServicesSection() {
                   {/* Electric Blue baseline */}
                   <path d="M3 72H209" stroke="#0049db" strokeWidth="6" strokeLinecap="round" />
                   <defs>
-                    <linearGradient id="paint0_fp" x1="106.385" y1="1.34375" x2="106" y2="72" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="white" stopOpacity="0" />
-                      <stop offset="1" stopColor="#0049db" />
-                    </linearGradient>
                     <clipPath id="clip0_fp">
                       <rect width="129" height="72" fill="white" transform="translate(41)" />
                     </clipPath>
@@ -119,7 +115,7 @@ export function ServicesSection() {
           </Card>
 
           {/* Card 3 — Landing Pages de Alta Conversão */}
-          <Card className="relative col-span-full overflow-hidden border-0 bg-white shadow-[0_4px_20px_rgba(0,73,219,0.06)] sm:col-span-3 lg:col-span-2">
+          <Card className="relative col-span-full overflow-hidden border-0 bg-white sm:col-span-3 lg:col-span-2">
             <CardContent className="pt-6">
               <div className="px-4">
                 <svg
@@ -132,7 +128,8 @@ export function ServicesSection() {
                     fillRule="evenodd"
                     clipRule="evenodd"
                     d="M3 123C3 123 14.3298 94.153 35.1282 88.0957C55.9266 82.0384 65.9333 80.5508 65.9333 80.5508C65.9333 80.5508 80.699 80.5508 92.1777 80.5508C103.656 80.5508 100.887 63.5348 109.06 63.5348C117.233 63.5348 117.217 91.9728 124.78 91.9728C132.343 91.9728 142.264 78.03 153.831 80.5508C165.398 83.0716 186.825 91.9728 193.761 91.9728C200.697 91.9728 206.296 63.5348 214.07 63.5348C221.844 63.5348 238.653 93.7771 244.234 91.9728C249.814 90.1684 258.8 60 266.19 60C272.075 60 284.1 88.057 286.678 88.0957C294.762 88.2171 300.192 72.9284 305.423 72.9284C312.323 72.9284 323.377 65.2437 335.553 63.5348C347.729 61.8259 348.218 82.07 363.639 80.5508C367.875 80.1335 372.949 82.2017 376.437 87.1008C379.446 91.3274 381.054 97.4325 382.521 104.647C383.479 109.364 382.521 123 382.521 123"
-                    fill="url(#paint0_lp)"
+                    fill="#0049db"
+                    fillOpacity="0.08"
                   />
                   <path
                     d="M3 121.077C3 121.077 15.3041 93.6691 36.0195 87.756C56.7349 81.8429 66.6632 80.9723 66.6632 80.9723C66.6632 80.9723 80.0327 80.9723 91.4656 80.9723C102.898 80.9723 100.415 64.2824 108.556 64.2824C116.696 64.2824 117.693 92.1332 125.226 92.1332C132.759 92.1332 142.07 78.5115 153.591 80.9723C165.113 83.433 186.092 92.1332 193 92.1332C199.908 92.1332 205.274 64.2824 213.017 64.2824C220.76 64.2824 237.832 93.8946 243.39 92.1332C248.948 90.3718 257.923 60.5 265.284 60.5C271.145 60.5 283.204 87.7182 285.772 87.756C293.823 87.8746 299.2 73.0802 304.411 73.0802C311.283 73.0802 321.425 65.9506 333.552 64.2824C345.68 62.6141 346.91 82.4553 362.27 80.9723C377.629 79.4892 383 106.605 383 106.605"
@@ -140,17 +137,6 @@ export function ServicesSection() {
                     strokeWidth="3"
                   />
                   <defs>
-                    <linearGradient
-                      id="paint0_lp"
-                      x1="3"
-                      y1="60"
-                      x2="3"
-                      y2="123"
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      <stop stopColor="#0049db" stopOpacity="0.15" />
-                      <stop offset="1" stopColor="#0049db" stopOpacity="0.01" />
-                    </linearGradient>
                   </defs>
                 </svg>
               </div>
@@ -166,7 +152,7 @@ export function ServicesSection() {
           </Card>
 
           {/* Card 4 — Sistemas sob medida (wide) */}
-          <Card className="relative col-span-full overflow-hidden border-0 bg-white shadow-[0_4px_20px_rgba(0,73,219,0.06)] lg:col-span-3">
+          <Card className="relative col-span-full overflow-hidden border-0 bg-white lg:col-span-3">
             <CardContent className="grid pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
                 <div className="relative flex aspect-square size-12 rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
@@ -213,7 +199,7 @@ export function ServicesSection() {
           </Card>
 
           {/* Card 5 — Integrações (wide) */}
-          <Card className="relative col-span-full overflow-hidden border-0 bg-white shadow-[0_4px_20px_rgba(0,73,219,0.06)] lg:col-span-3">
+          <Card className="relative col-span-full overflow-hidden border-0 bg-white lg:col-span-3">
             <CardContent className="grid h-full pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
                 <div className="relative flex aspect-square size-12 rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">

@@ -61,7 +61,7 @@ export function AboutSection() {
                     { value: "PME", label: "ESPECIALISTAS" },
                     { value: "∞", label: "ESCALABILIDADE" },
                   ].map((stat) => (
-                    <div key={stat.label} className="bg-white rounded-2xl p-6 shadow-[0_8px_24px_rgba(0,73,219,0.06)]">
+                    <div key={stat.label} className="bg-white rounded-2xl p-6">
                       <span className="block text-3xl font-black text-[#191c1e] font-[family-name:var(--font-display)]">
                         {stat.value}
                       </span>
@@ -73,7 +73,7 @@ export function AboutSection() {
             </div>
 
             {/* Floating testimonial */}
-            <div className="absolute -bottom-6 -left-6 bg-[#0049db] rounded-2xl shadow-xl p-6 max-w-xs">
+            <div className="absolute -bottom-6 -left-6 bg-[#0049db] rounded-2xl p-6 max-w-xs">
               <p className="text-white font-bold text-sm leading-snug">
                 "A ZION estruturou nossa operação e nos deu clareza para crescer."
               </p>
