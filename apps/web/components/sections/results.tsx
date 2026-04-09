@@ -3,54 +3,116 @@
 import { motion } from "framer-motion"
 import { Square3Stack3DIcon, AdjustmentsHorizontalIcon, RocketLaunchIcon, ArrowPathIcon, ArrowTrendingUpIcon } from "@heroicons/react/24/outline"
 import { results } from "@/lib/content"
-import Balancer from "react-wrap-balancer"
 
-const iconMap: Record<string, React.ReactNode> = {
-  layers: <Square3Stack3DIcon className="size-7" />,
-  sliders: <AdjustmentsHorizontalIcon className="size-7" />,
-  rocket: <RocketLaunchIcon className="size-7" />,
-  "refresh-cw": <ArrowPathIcon className="size-7" />,
-  "trending-up": <ArrowTrendingUpIcon className="size-7" />,
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  layers:       Square3Stack3DIcon,
+  sliders:      AdjustmentsHorizontalIcon,
+  rocket:       RocketLaunchIcon,
+  "refresh-cw": ArrowPathIcon,
+  "trending-up":ArrowTrendingUpIcon,
 }
+
+const ease = [0.22, 1, 0.36, 1] as [number, number, number, number]
 
 export function ResultsSection() {
   return (
-    <section id="resultados" className="py-32 px-6 bg-[#f2f4f6]">
+    <section id="resultados" className="py-32 px-6 bg-[#0d1c32] overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-          className="text-center mb-16"
-        >
-          <p className="text-xs font-black tracking-[0.2em] text-[#0049db] mb-4 font-[family-name:var(--font-display)]">
-            {results.label}
-          </p>
-          <h2
-            className="text-4xl md:text-5xl font-black text-[#191c1e] font-[family-name:var(--font-display)]"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            <Balancer>{results.headline}</Balancer>
-          </h2>
-        </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {results.items.map((result, i) => (
-            <motion.div
-              key={result.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
-              className="bg-white rounded-2xl p-8 flex flex-col items-center text-center gap-4 hover:scale-[1.02] transition-all duration-300"
+        {/* ── Header ─────────────────────────────────────────────────── */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease }}
+          >
+            <p className="text-xs font-black tracking-[0.22em] text-[#0049db] mb-5 font-[family-name:var(--font-display)]">
+              {results.label}
+            </p>
+            <h2
+              className="text-4xl md:text-5xl lg:text-6xl font-black text-white font-[family-name:var(--font-display)] leading-[1.05] max-w-xl"
+              style={{ letterSpacing: "-0.025em" }}
             >
-              <div className="text-[#0049db]">{iconMap[result.icon]}</div>
-              <p className="font-bold text-[#191c1e] text-sm font-[family-name:var(--font-display)]">
-                {result.label}
-              </p>
-            </motion.div>
-          ))}
+              {results.headline}
+            </h2>
+          </motion.div>
+
+          {/* Decorative counter badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: 0.2, ease }}
+            className="hidden lg:flex items-end gap-2 pb-1"
+            aria-hidden
+          >
+            <span
+              className="font-black text-white/8 font-[family-name:var(--font-display)] leading-none select-none"
+              style={{ fontSize: "clamp(80px, 10vw, 140px)", letterSpacing: "-0.04em" }}
+            >
+              {results.items.length}
+            </span>
+            <span className="text-sm font-black tracking-[0.15em] text-white/30 mb-4 font-[family-name:var(--font-display)]">
+              IMPACTOS
+            </span>
+          </motion.div>
+        </div>
+
+        {/* ── Manifesto rows ──────────────────────────────────────────── */}
+        <div className="border-t border-white/10">
+          {results.items.map((result, i) => {
+            const Icon = iconMap[result.icon]
+            return (
+              <motion.div
+                key={result.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.09, ease }}
+                className="group relative flex items-center gap-5 md:gap-8 py-7 md:py-8 border-b border-white/10 cursor-default select-none overflow-hidden"
+              >
+                {/* Blue left-edge reveal on hover */}
+                <span
+                  className="absolute left-0 top-0 h-full w-[3px] bg-[#0049db] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-bottom"
+                  aria-hidden
+                />
+
+                {/* Ordinal */}
+                <span className="text-xs font-black text-[#0049db]/60 group-hover:text-[#0049db] transition-colors duration-300 font-[family-name:var(--font-display)] tabular-nums w-7 shrink-0 pl-3">
+                  0{i + 1}
+                </span>
+
+                {/* Separator */}
+                <span className="hidden sm:block w-px h-6 bg-white/10 shrink-0" aria-hidden />
+
+                {/* Icon */}
+                {Icon && (
+                  <span className="shrink-0 text-white/25 group-hover:text-[#0049db] transition-colors duration-300">
+                    <Icon className="size-5 md:size-6" />
+                  </span>
+                )}
+
+                {/* Label */}
+                <span
+                  className="flex-1 font-black text-white/50 group-hover:text-white transition-colors duration-300 font-[family-name:var(--font-display)] leading-none"
+                  style={{
+                    fontSize: "clamp(1.4rem, 3vw, 2.5rem)",
+                    letterSpacing: "-0.025em",
+                  }}
+                >
+                  {result.label}
+                </span>
+
+                {/* Arrow — appears on hover */}
+                <span className="shrink-0 pr-2 text-[#0049db] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-2 group-hover:translate-x-0 transition-transform">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M7 17L17 7M17 7H7M17 7v10" />
+                  </svg>
+                </span>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
