@@ -96,7 +96,7 @@ export function HeroSection() {
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-          className="relative hidden perspective-near lg:block -translate-y-12 skew-x-6"
+          className="tran relative hidden scale-125 perspective-near lg:block"
         >
           {/* Blue ambient glow behind mockup */}
           <div
@@ -105,13 +105,13 @@ export function HeroSection() {
           />
 
           {/* Browser chrome + screenshot */}
-          <div className="relative origin-center rotate-x-[10deg] -rotate-y-[10deg] -rotate-z-[2deg] overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
+          <div className="relative translate-x-12 translate-y-20 skew-x-4 overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
             {/* Browser top bar */}
             <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
               <span className="size-[10px] rounded-full bg-[#ff5f57]" />
               <span className="size-[10px] rounded-full bg-[#febc2e]" />
               <span className="size-[10px] rounded-full bg-[#28c840]" />
-              <div className="ml-3 flex-1 rounded-full bg-white/5 px-3 py-[3px] font-mono text-[10px] tracking-wide text-white/25">
+              <div className="ml-3 flex-1 rounded-full bg-white/5 px-3 py-[3px] font-mono text-[10px] tracking-wide text-white/50">
                 app.zionsistemas.com.br
               </div>
             </div>
