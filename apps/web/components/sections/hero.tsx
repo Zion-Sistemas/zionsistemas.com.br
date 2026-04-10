@@ -39,7 +39,7 @@ export function HeroSection() {
         <div className="absolute bottom-[-10%] left-[-5%] h-1/3 w-1/3 rounded-full bg-blue-600/5 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-8xl grid-cols-1 items-center gap-12 px-10 lg:grid-cols-2 lg:gap-28 lg:px-16">
+      <div className="max-w-8xl relative z-10 mx-auto grid grid-cols-1 items-center gap-12 px-10 lg:grid-cols-2 lg:gap-28 lg:px-16">
         {/* ── Left: text content ── */}
         <motion.div
           variants={container}
@@ -96,7 +96,7 @@ export function HeroSection() {
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-          className="relative hidden perspective-midrange lg:block lg:translate-x-8 lg:scale-110 xl:translate-x-14 xl:scale-[1.18]"
+          className="relative hidden perspective-near lg:block -translate-y-12 skew-x-6"
         >
           {/* Blue ambient glow behind mockup */}
           <div
