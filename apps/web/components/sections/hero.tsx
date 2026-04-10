@@ -39,7 +39,7 @@ export function HeroSection() {
         <div className="absolute bottom-[-10%] left-[-5%] h-1/3 w-1/3 rounded-full bg-blue-600/5 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-8xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2 lg:gap-28 lg:px-12">
+      <div className="relative z-10 mx-auto grid max-w-8xl grid-cols-1 items-center gap-12 px-10 lg:grid-cols-2 lg:gap-28 lg:px-16">
         {/* ── Left: text content ── */}
         <motion.div
           variants={container}
@@ -105,7 +105,7 @@ export function HeroSection() {
           />
 
           {/* Browser chrome + screenshot */}
-          <div className="relative origin-center rotate-x-[4deg] rotate-y-[8deg] overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
+          <div className="relative origin-center rotate-x-[12deg] rotate-y-[6deg] rotate-z-[2deg] overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
             {/* Browser top bar */}
             <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
               <span className="size-[10px] rounded-full bg-[#ff5f57]" />
