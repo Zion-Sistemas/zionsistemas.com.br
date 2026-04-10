@@ -2,16 +2,11 @@
 
 import { motion } from "framer-motion"
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRightIcon } from "@heroicons/react/24/solid"
 import Balancer from "react-wrap-balancer"
-import dynamic from "next/dynamic"
-import { Suspense } from "react"
-
-const RubiksCube = dynamic(
-  () => import("@/components/ui/rubiks-cube").then((m) => m.RubiksCube),
-  { ssr: false }
-)
 import { hero } from "@/lib/content"
+import mockupImage from "@/assets/mockup.png"
 
 const container = {
   hidden: { opacity: 0 },
@@ -37,20 +32,21 @@ export function HeroSection() {
     <section id="hero"
       className="relative flex min-h-screen items-start overflow-hidden bg-[#0d1c32] pt-28 pb-16 lg:items-center"
     >
-      {/* Subtle ambient glow behind the Spline canvas */}
+      {/* Ambient glows */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-[-10%] right-[-5%] h-1/2 w-1/2 rounded-full bg-[#0049db]/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] left-[-5%] h-1/3 w-1/3 rounded-full bg-blue-600/5 blur-[100px]" />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 px-8 lg:grid-cols-2 lg:px-12">
+      <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2 lg:gap-16 lg:px-12">
+
+        {/* ── Left: text content ── */}
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
           className="space-y-8"
         >
-          {/* Headline */}
           <motion.h1
             variants={item}
             className="font-[family-name:var(--font-display)] text-5xl leading-tight font-black tracking-tight text-white md:text-6xl lg:text-7xl"
@@ -59,7 +55,6 @@ export function HeroSection() {
             <Balancer>{hero.headline}</Balancer>
           </motion.h1>
 
-          {/* Subheadline */}
           <motion.p
             variants={item}
             className="max-w-lg text-lg leading-relaxed text-on-dark-secondary"
@@ -67,7 +62,6 @@ export function HeroSection() {
             <Balancer>{hero.subheadline}</Balancer>
           </motion.p>
 
-          {/* CTAs */}
           <motion.div variants={item} className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
               href={hero.ctaPrimary.href}
@@ -90,22 +84,58 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Visual side — Rubik's Cube 3D */}
+        {/* ── Right: app mockup ── */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, x: 48, scale: 0.95 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{
             duration: 1.1,
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-          className="relative hidden w-full overflow-hidden lg:block"
-          style={{ height: "520px" }}
+          className="relative hidden lg:block"
+          style={{ perspective: "1400px" }}
         >
-          <Suspense fallback={null}>
-            <RubiksCube className="h-full w-full" />
-          </Suspense>
+          {/* Blue ambient glow behind mockup */}
+          <div
+            className="pointer-events-none absolute -inset-6 rounded-[48px] bg-[#0049db]/25 blur-[70px]"
+            aria-hidden
+          />
+
+          {/* Browser chrome + screenshot */}
+          <div
+            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)]"
+            style={{
+              transform: "rotateY(-8deg) rotateX(4deg)",
+              transformOrigin: "center center",
+              willChange: "transform",
+            }}
+          >
+            {/* Browser top bar */}
+            <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
+              <span className="size-[10px] rounded-full bg-[#ff5f57]" />
+              <span className="size-[10px] rounded-full bg-[#febc2e]" />
+              <span className="size-[10px] rounded-full bg-[#28c840]" />
+              <div className="ml-3 flex-1 rounded-full bg-white/5 px-3 py-[3px] font-mono text-[10px] tracking-wide text-white/25">
+                app.zionsistemas.com.br
+              </div>
+            </div>
+
+            {/* Screenshot */}
+            <div className="relative">
+              <Image
+                src={mockupImage}
+                alt="Painel de controle Zion Sistemas — visão geral com análises e relatórios"
+                className="block w-full"
+                priority={false}
+                quality={90}
+              />
+              {/* Fade bottom edge into hero background */}
+              <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0d1c32] to-transparent" />
+            </div>
+          </div>
         </motion.div>
+
       </div>
     </section>
   )
