@@ -35,7 +35,7 @@ export function Footer() {
           {/* Social links */}
           <div className="mt-2 flex items-center gap-3">
             <a
-              href="https://instagram.com/zionsistemas"
+              href="https://www.instagram.com/zionsistemasoficial"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram da ZION Sistemas"
