@@ -31,7 +31,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-start overflow-hidden bg-[#0d1c32] pt-28 pb-16 lg:items-center"
+      className="relative flex min-h-screen items-start overflow-hidden bg-[#0d1c32] pt-28 pb-0 lg:items-center lg:pb-16"
     >
       {/* Ambient glows */}
       <div className="pointer-events-none absolute inset-0">
@@ -89,14 +89,14 @@ export function HeroSection() {
 
         {/* ── Right: app mockup ── */}
         <motion.div
-          initial={{ opacity: 0, x: 48, scale: 0.95 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 32, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{
             duration: 1.1,
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-          className="tran relative hidden scale-125 perspective-near lg:block"
+          className="relative perspective-near lg:scale-125"
         >
           {/* Blue ambient glow behind mockup */}
           <div
@@ -105,7 +105,7 @@ export function HeroSection() {
           />
 
           {/* Browser chrome + screenshot */}
-          <div className="relative translate-x-12 translate-y-20 skew-x-4 overflow-hidden rounded-2xl border border-white/10 [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
+          <div className="relative translate-x-3 translate-y-4 skew-x-1 overflow-hidden rounded-2xl border border-white/10 [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform lg:translate-x-12 lg:translate-y-20 lg:skew-x-4">
             {/* Browser top bar */}
             <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
               <span className="size-[10px] rounded-full bg-[#ff5f57]" />
@@ -125,8 +125,6 @@ export function HeroSection() {
                 priority={false}
                 quality={90}
               />
-              {/* Fade bottom edge into hero background */}
-              {/* <div className="absolute right-0 bottom-0 left-0 h-28 bg-gradient-to-t from-[#0d1c32] to-transparent" /> */}
             </div>
           </div>
         </motion.div>
