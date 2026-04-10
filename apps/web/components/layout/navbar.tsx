@@ -37,15 +37,16 @@ export function Navbar() {
       <header
         className={cn(
           "fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl -translate-x-1/2",
-          "grid grid-cols-[1fr_auto_1fr] items-center rounded-full px-6 py-3",
+          "flex items-center justify-between rounded-full px-6 py-3",
+          "md:grid md:grid-cols-[1fr_auto_1fr]",
           "transition-all duration-500",
           scrolled
             ? "bg-[#f7f9fb]/85 ring-1 ring-[#c3c5d8]/40 backdrop-blur-xl"
             : "bg-transparent ring-0 backdrop-blur-none"
         )}
       >
-        {/* Logo — left column */}
-        <Link href="/" className="flex items-center gap-2 justify-self-start">
+        {/* Logo — left */}
+        <Link href="/" className="flex items-center gap-2 md:justify-self-start">
           <Image
             src="/logo.png"
             alt="ZION"
@@ -65,7 +66,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav — center column, truly centered */}
-        <nav className="hidden items-center gap-8 justify-self-center md:flex">
+        <nav className="hidden items-center gap-8 md:flex md:justify-self-center">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -82,8 +83,8 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Desktop CTA — right column */}
-        <div className="flex items-center justify-self-end">
+        {/* Desktop CTA + Mobile hamburger — right */}
+        <div className="flex items-center md:justify-self-end">
           {!isContactPage ? (
             <Link
               href="/contact"

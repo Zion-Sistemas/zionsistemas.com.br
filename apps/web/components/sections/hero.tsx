@@ -35,7 +35,7 @@ const item = {
 export function HeroSection() {
   return (
     <section id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0d1c32] pt-28 pb-16"
+      className="relative flex min-h-screen items-start overflow-hidden bg-[#0d1c32] pt-28 pb-16 lg:items-center"
     >
       {/* Subtle ambient glow behind the Spline canvas */}
       <div className="pointer-events-none absolute inset-0">
