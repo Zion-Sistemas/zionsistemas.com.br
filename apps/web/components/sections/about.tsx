@@ -64,10 +64,10 @@ export function AboutSection() {
               delay: 0.1,
               ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
             }}
-            className="relative"
+            className="relative mt-4 lg:mt-0"
           >
             {/* Background card */}
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl">
+            <div className="relative aspect-square overflow-hidden rounded-3xl lg:aspect-[4/3]">
               <div className="absolute inset-x-[-3%] top-0 bottom-0">
                 <Image
                   src={mountainImage}
@@ -80,7 +80,7 @@ export function AboutSection() {
             </div>
 
             {/* Floating testimonial */}
-            <div className="absolute -bottom-6 left-0 sm:-left-6 max-w-[calc(100%-1.5rem)] sm:max-w-xs rounded-2xl bg-[#0049db] p-5 sm:p-6">
+            <div className="absolute -bottom-6 left-0 sm:-left-6 w-64 sm:w-72 rounded-2xl bg-[#0049db] p-5 sm:p-6">
               <p className="text-sm leading-snug font-bold text-white">
                 "A ZION estruturou nossa operação e nos deu clareza para
                 crescer."

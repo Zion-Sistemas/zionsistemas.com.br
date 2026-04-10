@@ -169,8 +169,8 @@ export function ServicesSection() {
           <Card className="relative col-span-full overflow-hidden border-0 bg-white lg:col-span-3">
             <CardContent className="grid pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                <div className="relative flex aspect-square size-12 rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
-                  <CodeBracketIcon className="m-auto size-5 text-[#191c1e]" />
+                <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
+                  <CodeBracketIcon className="size-5 text-[#191c1e]" />
                 </div>
                 <div className="space-y-2">
                   <h3 className="font-[family-name:var(--font-display)] text-lg font-bold text-[#191c1e]">
@@ -216,9 +216,9 @@ export function ServicesSection() {
           <Card className="relative col-span-full overflow-hidden border-0 bg-white lg:col-span-3">
             <CardContent className="grid h-full pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                <div className="relative flex aspect-square size-12 rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
+                <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
                   <UserGroupIcon
-                    className="m-auto size-5 text-[#191c1e]"
+                    className="size-5 text-[#191c1e]"
                     strokeWidth={1}
                   />
                 </div>
