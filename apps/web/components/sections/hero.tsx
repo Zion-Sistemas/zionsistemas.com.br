@@ -29,7 +29,8 @@ const item = {
 
 export function HeroSection() {
   return (
-    <section id="hero"
+    <section
+      id="hero"
       className="relative flex min-h-screen items-start overflow-hidden bg-[#0d1c32] pt-28 pb-16 lg:items-center"
     >
       {/* Ambient glows */}
@@ -39,7 +40,6 @@ export function HeroSection() {
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-8 lg:grid-cols-2 lg:gap-16 lg:px-12">
-
         {/* ── Left: text content ── */}
         <motion.div
           variants={container}
@@ -62,7 +62,10 @@ export function HeroSection() {
             <Balancer>{hero.subheadline}</Balancer>
           </motion.p>
 
-          <motion.div variants={item} className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
+          <motion.div
+            variants={item}
+            className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4"
+          >
             <Link
               href={hero.ctaPrimary.href}
               className="group inline-flex items-center justify-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-sm font-semibold text-[#191c1e] transition-transform duration-200 hover:scale-105 active:scale-95 sm:justify-start"
@@ -93,8 +96,7 @@ export function HeroSection() {
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-          className="relative hidden lg:block"
-          style={{ perspective: "1400px" }}
+          className="relative hidden lg:block perspective-distant"
         >
           {/* Blue ambient glow behind mockup */}
           <div
@@ -104,12 +106,7 @@ export function HeroSection() {
 
           {/* Browser chrome + screenshot */}
           <div
-            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)]"
-            style={{
-              transform: "rotateY(-8deg) rotateX(4deg)",
-              transformOrigin: "center center",
-              willChange: "transform",
-            }}
+            className="relative overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] rotate-x-[4deg] rotate-y-[8deg] will-change-transform origin-center"
           >
             {/* Browser top bar */}
             <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
@@ -131,11 +128,10 @@ export function HeroSection() {
                 quality={90}
               />
               {/* Fade bottom edge into hero background */}
-              <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#0d1c32] to-transparent" />
+              <div className="absolute right-0 bottom-0 left-0 h-28 bg-gradient-to-t from-[#0d1c32] to-transparent" />
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   )
