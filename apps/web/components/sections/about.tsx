@@ -9,9 +9,9 @@ import mountainImage from "@/assets/mountain.png"
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="bg-[#f7f9fb] px-8 sm:px-12 py-32">
+    <section id="sobre" className="overflow-hidden bg-[#f7f9fb] px-8 sm:px-12 py-20 lg:py-32">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 items-center gap-20 lg:grid-cols-2">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Text side */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -80,7 +80,7 @@ export function AboutSection() {
             </div>
 
             {/* Floating testimonial */}
-            <div className="absolute -bottom-6 -left-6 max-w-xs rounded-2xl bg-[#0049db] p-6">
+            <div className="absolute -bottom-6 left-0 sm:-left-6 max-w-[calc(100%-1.5rem)] sm:max-w-xs rounded-2xl bg-[#0049db] p-5 sm:p-6">
               <p className="text-sm leading-snug font-bold text-white">
                 "A ZION estruturou nossa operação e nos deu clareza para
                 crescer."

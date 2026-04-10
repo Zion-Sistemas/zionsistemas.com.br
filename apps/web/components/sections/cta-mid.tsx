@@ -8,7 +8,7 @@ import { ctaMid } from "@/lib/content"
 
 export function CtaMidSection() {
   return (
-    <section className="bg-white px-8 sm:px-12 py-32">
+    <section className="bg-white px-8 sm:px-12 py-20 lg:py-32">
       <div className="mx-auto max-w-3xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 32 }}

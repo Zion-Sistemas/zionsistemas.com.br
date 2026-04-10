@@ -35,7 +35,7 @@ const item = {
 export function HeroSection() {
   return (
     <section id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0d1c32] pt-28 pb-20"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#0d1c32] pt-28 pb-16"
     >
       {/* Subtle ambient glow behind the Spline canvas */}
       <div className="pointer-events-none absolute inset-0">
@@ -68,10 +68,10 @@ export function HeroSection() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={item} className="flex flex-wrap gap-4 pt-2">
+          <motion.div variants={item} className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap sm:gap-4">
             <Link
               href={hero.ctaPrimary.href}
-              className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-sm font-semibold text-[#191c1e] transition-transform duration-200 hover:scale-105 active:scale-95"
+              className="group inline-flex items-center justify-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-sm font-semibold text-[#191c1e] transition-transform duration-200 hover:scale-105 active:scale-95 sm:justify-start"
             >
               {hero.ctaPrimary.label}
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#0049db] text-white transition-colors duration-200 group-hover:bg-[#2962ff]">
@@ -80,7 +80,7 @@ export function HeroSection() {
             </Link>
             <Link
               href={hero.ctaSecondary.href}
-              className="group inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 py-2 pr-2 pl-6 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 active:scale-95"
+              className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 py-2 pr-2 pl-6 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 active:scale-95 sm:justify-start"
             >
               {hero.ctaSecondary.label}
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 group-hover:bg-white/20">

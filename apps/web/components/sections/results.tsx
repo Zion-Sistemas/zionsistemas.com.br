@@ -24,11 +24,11 @@ export function ResultsSection() {
   return (
     <section
       id="resultados"
-      className="overflow-hidden bg-[#0d1c32] px-8 sm:px-12 py-32"
+      className="overflow-hidden bg-[#0d1c32] px-8 sm:px-12 py-20 lg:py-32"
     >
       <div className="mx-auto max-w-7xl">
         {/* ── Header ─────────────────────────────────────────────────── */}
-        <div className="mb-20 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div className="mb-12 flex flex-col gap-8 lg:mb-20 lg:flex-row lg:items-end lg:justify-between">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
