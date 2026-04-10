@@ -9,7 +9,10 @@ import mountainImage from "@/assets/mountain.png"
 
 export function AboutSection() {
   return (
-    <section id="sobre" className="overflow-hidden bg-[#f7f9fb] px-8 sm:px-12 py-20 lg:py-32">
+    <section
+      id="sobre"
+      className="overflow-hidden bg-[#f7f9fb] px-8 py-20 sm:px-12 lg:py-32"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-20">
           {/* Text side */}
@@ -66,21 +69,22 @@ export function AboutSection() {
             }}
             className="relative lg:mt-0"
           >
+            {/* Electric backlight — sits outside overflow-hidden so it halos freely */}
+            <div
+              className="pointer-events-none absolute inset-x-[5%] bottom-[5%] h-[65%] rounded-full bg-[#0049db]/25 blur-[90px]"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-x-[20%] bottom-[15%] h-[45%] rounded-full bg-[#2962ff]/20 blur-[65px]"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute left-1/2 bottom-[25%] h-[30%] w-[35%] -translate-x-1/2 rounded-full bg-[#93c5fd]/15 blur-[45px]"
+              aria-hidden
+            />
+
             {/* Background card */}
             <div className="relative h-64 overflow-hidden rounded-3xl sm:h-80 lg:aspect-[4/3] lg:h-auto">
-              {/* Electric backlight — radiates from behind/below the mountain */}
-              <div
-                className="pointer-events-none absolute bottom-[-10%] left-1/2 h-[70%] w-[70%] -translate-x-1/2 rounded-full bg-[#0049db]/40 blur-[80px]"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute bottom-[-5%] left-[48%] h-[45%] w-[45%] -translate-x-1/2 rounded-full bg-[#2962ff]/30 blur-[55px]"
-                aria-hidden
-              />
-              <div
-                className="pointer-events-none absolute bottom-[10%] left-1/2 h-[30%] w-[30%] -translate-x-1/2 rounded-full bg-[#60a5fa]/20 blur-[40px]"
-                aria-hidden
-              />
               <div className="absolute inset-x-[-3%] top-0 bottom-0">
                 <Image
                   src={mountainImage}
@@ -93,7 +97,7 @@ export function AboutSection() {
             </div>
 
             {/* Floating testimonial */}
-            <div className="absolute -bottom-6 left-0 sm:-left-6 w-64 sm:w-72 rounded-2xl bg-[#0049db] p-5 sm:p-6">
+            <div className="absolute -bottom-6 left-0 w-64 rounded-2xl bg-[#0049db] p-5 sm:-left-6 sm:w-72 sm:p-6">
               <p className="text-sm leading-snug font-bold text-white">
                 "A ZION estruturou nossa operação e nos deu clareza para
                 crescer."
