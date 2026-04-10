@@ -169,7 +169,7 @@ export function ServicesSection() {
           <Card className="relative col-span-full overflow-hidden border-0 bg-white lg:col-span-3">
             <CardContent className="grid pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
+                <div className="relative mx-auto flex aspect-square size-12 items-center justify-center rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20 lg:mx-0">
                   <CodeBracketIcon className="size-5 text-[#191c1e]" />
                 </div>
                 <div className="space-y-2">
@@ -216,7 +216,7 @@ export function ServicesSection() {
           <Card className="relative col-span-full overflow-hidden border-0 bg-white lg:col-span-3">
             <CardContent className="grid h-full pt-6 sm:grid-cols-2">
               <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                <div className="relative flex aspect-square size-12 items-center justify-center rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20">
+                <div className="relative mx-auto flex aspect-square size-12 items-center justify-center rounded-full border border-[#c3c5d8]/40 before:absolute before:-inset-2 before:rounded-full before:border before:border-[#c3c5d8]/20 lg:mx-0">
                   <UserGroupIcon
                     className="size-5 text-[#191c1e]"
                     strokeWidth={1}
