@@ -11,7 +11,7 @@ export function AboutSection() {
   return (
     <section id="sobre" className="overflow-hidden bg-[#f7f9fb] px-8 sm:px-12 py-20 lg:py-32">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid grid-cols-1 items-center gap-4 lg:grid-cols-2 lg:gap-20">
           {/* Text side */}
           <motion.div
             initial={{ opacity: 0, x: -32 }}
@@ -64,10 +64,10 @@ export function AboutSection() {
               delay: 0.1,
               ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
             }}
-            className="relative mt-4 lg:mt-0"
+            className="relative lg:mt-0"
           >
             {/* Background card */}
-            <div className="relative aspect-square overflow-hidden rounded-3xl lg:aspect-[4/3]">
+            <div className="relative h-64 overflow-hidden rounded-3xl sm:h-80 lg:aspect-[4/3] lg:h-auto">
               <div className="absolute inset-x-[-3%] top-0 bottom-0">
                 <Image
                   src={mountainImage}
