@@ -82,7 +82,7 @@ export function Footer() {
             {footer.contact.whatsapp.label}
           </Link>
           <address className="not-italic text-sm text-on-dark-secondary">
-            Franca, São Paulo – Brasil
+            Franca, São Paulo &amp; Londrina, Paraná – Brasil
           </address>
         </div>
       </div>

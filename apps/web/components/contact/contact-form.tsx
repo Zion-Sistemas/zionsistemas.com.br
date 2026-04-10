@@ -120,6 +120,7 @@ export function ContactForm() {
               <label className="block">
                 <span className={labelClassName}>Nome</span>
                 <input
+                  autoFocus
                   className={inputClassName}
                   name={field.name}
                   value={field.state.value}
