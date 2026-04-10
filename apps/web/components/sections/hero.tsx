@@ -105,7 +105,7 @@ export function HeroSection() {
           />
 
           {/* Browser chrome + screenshot */}
-          <div className="relative translate-x-12 translate-y-20 skew-x-4 overflow-hidden rounded-2xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
+          <div className="relative translate-x-12 translate-y-20 skew-x-4 overflow-hidden rounded-2xl border border-white/10 [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform">
             {/* Browser top bar */}
             <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
               <span className="size-[10px] rounded-full bg-[#ff5f57]" />
