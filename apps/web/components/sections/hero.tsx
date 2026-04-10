@@ -68,7 +68,7 @@ export function HeroSection() {
           >
             <Link
               href={hero.ctaPrimary.href}
-              className="group inline-flex items-center justify-center gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-sm font-semibold text-[#191c1e] transition-transform duration-200 hover:scale-105 active:scale-95 sm:justify-start"
+              className="group inline-flex w-full items-center justify-between gap-3 rounded-full bg-white py-2 pr-2 pl-6 text-sm font-semibold text-[#191c1e] transition-transform duration-200 hover:scale-105 active:scale-95 sm:w-auto sm:justify-start"
             >
               {hero.ctaPrimary.label}
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#0049db] text-white transition-colors duration-200 group-hover:bg-[#2962ff]">
@@ -77,7 +77,7 @@ export function HeroSection() {
             </Link>
             <Link
               href={hero.ctaSecondary.href}
-              className="group inline-flex items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 py-2 pr-2 pl-6 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 active:scale-95 sm:justify-start"
+              className="group inline-flex w-full items-center justify-between gap-3 rounded-full border border-white/15 bg-white/5 py-2 pr-2 pl-6 text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:bg-white/10 active:scale-95 sm:w-auto sm:justify-start"
             >
               {hero.ctaSecondary.label}
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-200 group-hover:bg-white/20">
@@ -96,7 +96,7 @@ export function HeroSection() {
             delay: 0.35,
             ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-          className="relative perspective-near lg:scale-125"
+          className="relative scale-125 perspective-near"
         >
           {/* Blue ambient glow behind mockup */}
           <div
@@ -105,7 +105,7 @@ export function HeroSection() {
           />
 
           {/* Browser chrome + screenshot */}
-          <div className="relative translate-x-3 translate-y-4 skew-x-1 overflow-hidden rounded-2xl border border-white/10 [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform lg:translate-x-12 lg:translate-y-20 lg:skew-x-4">
+          <div className="relative translate-x-12 translate-y-12 skew-x-2 overflow-hidden rounded-2xl border border-white/10 [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] shadow-[0_40px_100px_rgba(0,0,0,0.65),0_0_0_1px_rgba(0,73,219,0.15)] will-change-transform lg:translate-y-20 lg:skew-x-4">
             {/* Browser top bar */}
             <div className="flex items-center gap-1.5 border-b border-white/8 bg-[#0f1d2e] px-4 py-[10px]">
               <span className="size-[10px] rounded-full bg-[#ff5f57]" />
