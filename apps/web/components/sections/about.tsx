@@ -68,6 +68,19 @@ export function AboutSection() {
           >
             {/* Background card */}
             <div className="relative h-64 overflow-hidden rounded-3xl sm:h-80 lg:aspect-[4/3] lg:h-auto">
+              {/* Electric backlight — radiates from behind/below the mountain */}
+              <div
+                className="pointer-events-none absolute bottom-[-10%] left-1/2 h-[70%] w-[70%] -translate-x-1/2 rounded-full bg-[#0049db]/40 blur-[80px]"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute bottom-[-5%] left-[48%] h-[45%] w-[45%] -translate-x-1/2 rounded-full bg-[#2962ff]/30 blur-[55px]"
+                aria-hidden
+              />
+              <div
+                className="pointer-events-none absolute bottom-[10%] left-1/2 h-[30%] w-[30%] -translate-x-1/2 rounded-full bg-[#60a5fa]/20 blur-[40px]"
+                aria-hidden
+              />
               <div className="absolute inset-x-[-3%] top-0 bottom-0">
                 <Image
                   src={mountainImage}
