@@ -39,7 +39,7 @@ export function HeroSection() {
         <div className="absolute bottom-[-10%] left-[-5%] h-1/3 w-1/3 rounded-full bg-blue-600/5 blur-[100px]" />
       </div>
 
-      <div className="max-w-8xl relative z-10 mx-auto grid grid-cols-1 items-center gap-12 px-10 lg:grid-cols-2 lg:gap-28 lg:px-16">
+      <div className="max-w-8xl relative z-10 mx-auto grid grid-cols-1 items-center gap-12 px-14 lg:grid-cols-2 lg:gap-28 lg:px-24">
         {/* ── Left: text content ── */}
         <motion.div
           variants={container}
