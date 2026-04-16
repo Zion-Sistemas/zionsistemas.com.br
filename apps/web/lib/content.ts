@@ -1,6 +1,6 @@
 export const hero = {
   badge: "EXCELÊNCIA DIGITAL",
-  headline: "Construa sistemas que fazem seu negócio crescer",
+  headline: "Criando soluções que fazem seu negócio crescer",
   subheadline:
     "Desenvolvemos softwares, automações e soluções digitais sob medida para empresas que querem escalar com eficiência e controle.",
   ctaPrimary: { label: "Falar com um Consultor", href: "/contact" },
@@ -177,7 +177,7 @@ export const footer = {
   nav: [
     { label: "Início", href: "/" },
     { label: "Serviços", href: "/#servicos" },
-    { label: "Sobre", href: "/#sobre" },
+    { label: "Sobre", href: "/about" },
     { label: "Contato", href: "/contact" },
   ],
   contact: {

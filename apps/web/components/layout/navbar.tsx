@@ -15,7 +15,7 @@ import { footer } from "@/lib/content"
 
 const navLinks = [
   { label: "SOLUÇÕES", href: "/#servicos" },
-  { label: "SOBRE", href: "/#sobre" },
+  { label: "SOBRE", href: "/about" },
   { label: "PROCESSO", href: "/#como-funciona" },
   { label: "RESULTADOS", href: "/#resultados" },
 ]
