@@ -1,6 +1,6 @@
 1. HERO (primeira dobra)
 Título (headline):
-Construa sistemas que fazem seu negócio crescer
+Criando soluções que fazem seu negócio crescer
 Subtítulo:
 Desenvolvemos softwares, automações e soluções digitais sob medida para empresas que
 querem escalar com eficiência e controle.
