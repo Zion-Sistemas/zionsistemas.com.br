@@ -84,7 +84,7 @@ export function AboutPage() {
           >
             Um grupo de desenvolvedores percebeu que algumas empresas
             precisavam de ferramentas simples, feitas para o jeito que eles
-            trabalham — mas só encontravam sistemas caros, genéricos, que no
+            trabalham. Mas só encontravam sistemas caros, genéricos, que no
             fim não resolviam nada.
           </motion.p>
         </div>
