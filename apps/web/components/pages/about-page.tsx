@@ -83,7 +83,7 @@ export function AboutPage() {
             className="mt-10 max-w-2xl text-lg leading-relaxed text-[#8aa3bb] sm:text-xl"
           >
             Um grupo de desenvolvedores percebeu que algumas empresas
-            precisavam de ferramentas simples, feitas para o jeito que eles
+            precisavam de ferramentas simples, feitas para o jeito que elas
             trabalham. Mas só encontravam sistemas caros, genéricos, que no
             fim não resolviam nada.
           </motion.p>

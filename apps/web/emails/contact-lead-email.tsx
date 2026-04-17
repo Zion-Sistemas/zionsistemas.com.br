@@ -21,15 +21,15 @@ export function ContactLeadEmail(props: ContactLeadEmailProps) {
       preview={`Novo contato da ZION: ${props.name} • ${props.projectType}`}
       eyebrow="Novo lead"
       title="Novo contato recebido pelo site."
-      intro="Uma nova solicitacao chegou pela pagina de contato. Os dados principais estao organizados abaixo para triagem e retorno."
+      intro="Uma nova solicitação chegou pela página de contato. Os dados principais estão organizados abaixo para triagem e retorno."
       ctaLabel="Responder lead"
       ctaHref={`mailto:${props.email}`}
-      outro="Este email foi gerado automaticamente pela pagina /contact da ZION."
+      outro="Este email foi gerado automaticamente pela página /contact da ZION."
     >
       <Section style={emailStyles.insetCard}>
         <Text style={emailStyles.sectionTitle}>Resumo do contato</Text>
         {fields.map(({ key, label }) => {
-          const value = props[key] || "Nao informado"
+          const value = props[key] || "Não informado"
 
           return (
             <Section key={key} style={{ marginBottom: "16px" }}>
@@ -46,7 +46,7 @@ export function ContactLeadEmail(props: ContactLeadEmailProps) {
       </Section>
 
       <Text style={emailStyles.mutedText}>
-        Se responder este email, use o endereco informado pelo lead ou o
+        Se responder este email, use o endereço informado pelo lead ou o
         reply-to configurado no envio.
       </Text>
     </EmailShell>

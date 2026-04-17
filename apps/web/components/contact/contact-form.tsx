@@ -51,7 +51,7 @@ async function submitContactForm(values: ContactFormValues) {
   const data = (await response.json()) as ContactResponse
 
   if (!response.ok) {
-    throw new Error(data.message || "Nao foi possivel enviar sua mensagem.")
+    throw new Error(data.message || "Não foi possível enviar sua mensagem.")
   }
 
   return data
@@ -310,7 +310,7 @@ export function ContactForm() {
         <div className="flex flex-col gap-4 border-t border-[#c3c5d8]/20 pt-6 md:flex-row md:items-center md:justify-between">
           <p className="max-w-sm text-sm leading-relaxed text-[#191c1e]/55">
             Respondemos com direcionamento inicial, escopo recomendado e
-            proximos passos.
+            próximos passos.
           </p>
 
           <form.Subscribe

@@ -14,7 +14,7 @@ import { footer } from "@/lib/content"
 export const metadata: Metadata = {
   title: "Contato | ZION",
   description:
-    "Fale com a ZION sobre sistemas sob medida, automacoes, integracoes e estrutura digital para crescer com eficiencia.",
+    "Fale com a ZION sobre sistemas sob medida, automações, integrações e estrutura digital para crescer com eficiência.",
 }
 
 export default function ContactPage() {
@@ -34,11 +34,11 @@ export default function ContactPage() {
                 CONTATO ZION
               </p>
               <h1 className="font-[family-name:var(--font-display)] text-5xl leading-[0.95] font-black tracking-[-0.03em] md:text-6xl">
-                Estruture a proxima fase do seu negócio com a solução certa.
+                Estruture a próxima fase do seu negócio com a solução certa.
               </h1>
               <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#8aa3bb]">
-                Esta pagina foi desenhada para acelerar o primeiro contato.
-                Compartilhe seu contexto e a ZION retorna com um caminho tecnico
+                Esta página foi desenhada para acelerar o primeiro contato.
+                Compartilhe seu contexto e a ZION retorna com um caminho técnico
                 objetivo.
               </p>
 

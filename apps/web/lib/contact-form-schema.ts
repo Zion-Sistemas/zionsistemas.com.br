@@ -2,9 +2,9 @@ import { z } from "zod"
 
 export const contactProjectTypes = [
   "Sistema sob medida",
-  "Automacao de processos",
+  "Automação de processos",
   "Landing page",
-  "Integracoes",
+  "Integrações",
   "Consultoria",
 ] as const
 
@@ -17,7 +17,7 @@ const contactFieldSchemas = {
     .string()
     .trim()
     .min(1, "Informe um e-mail para contato.")
-    .email("Digite um e-mail valido."),
+    .email("Digite um e-mail válido."),
   company: z
     .string()
     .trim()
@@ -28,10 +28,10 @@ const contactFieldSchemas = {
     .refine(
       (value) =>
         value.length === 0 || /^\(\d{2}\)\s\d{4,5}-\d{4}$/.test(value),
-      "Digite um WhatsApp valido no formato brasileiro."
+      "Digite um WhatsApp válido no formato brasileiro."
     ),
   projectType: z.enum(contactProjectTypes, {
-    errorMap: () => ({ message: "Selecione uma categoria de projeto valida." }),
+    errorMap: () => ({ message: "Selecione uma categoria de projeto válida." }),
   }),
   message: z
     .string()
@@ -55,7 +55,7 @@ export function zodResolver(fieldName: ContactFieldName) {
       return undefined
     }
 
-    return result.error.issues[0]?.message ?? "Campo invalido."
+    return result.error.issues[0]?.message ?? "Campo inválido."
   }
 }
 
